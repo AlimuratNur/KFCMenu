@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace KFCMenu.ViewModes.Base
@@ -22,9 +23,10 @@ namespace KFCMenu.ViewModes.Base
 
         public void Dispose()
         {
-
         }
+
         private bool _Disposed;
+
         protected virtual void Dispose(bool Disposing)
         {
             if (!_Disposed || _Disposed) return;
