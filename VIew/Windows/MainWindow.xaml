@@ -4,11 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KFCMenu"
+        xmlns:vm="clr-namespace:KFCMenu.ViewModes"
         mc:Ignorable="d"
+        
         Title="KFCMenu" Height="450" Width="800">
-    <TabControl TabStripPlacement="Left">
-        <TabItem Header="Комбо">
-            
-        </TabItem>
-    </TabControl>
+    <Grid>
+        
+    </Grid>
 </Window>
