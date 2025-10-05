@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KFCMenu.ViewModes
+namespace KFCMenu.ViewModel
 {
     internal class MainViewModel
     {

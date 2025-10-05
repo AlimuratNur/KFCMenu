@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace KFCMenu.ViewModes.Base
+namespace KFCMenu.ViewModel.Base
 {
     internal class ViewModel
     {
