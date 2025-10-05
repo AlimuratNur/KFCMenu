@@ -8,6 +8,12 @@
         mc:Ignorable="d"
         
         Title="KFCMenu" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="FoodTypeButton" TargetType="Button">
+            <Setter Property="Height" Value="20" />
+        </Style>
+    </Window.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -17,9 +23,17 @@
             <RowDefinition Height="75"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
-        
-        
+
+        <Button Grid.Column="0" Grid.Row="0" Margin="14,15" Background="AliceBlue" BorderBrush="Red">
+            <TextBlock Text="KFC" FontFamily="Javanese Text" Margin="10"/>
+        </Button>
+
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <Button Style="{StaticResource FoodTypeButton}"></Button>
+            <Button Style="{StaticResource FoodTypeButton}"></Button>
+            <Button Style="{StaticResource FoodTypeButton}"></Button>
+            <Button Style="{StaticResource FoodTypeButton}"></Button>
+        </StackPanel>
         
     </Grid>
 </Window>
