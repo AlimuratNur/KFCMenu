@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace KFCMenu.ViewModel.Base
 {
-    internal class ViewModel
+    internal class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

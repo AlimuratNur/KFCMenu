@@ -10,7 +10,7 @@
         Title="KFCMenu" Height="450" Width="800">
     <Window.Resources>
         <Style x:Key="FoodTypeButton" TargetType="Button">
-            <Setter Property="Height" Value="20" />
+            <Setter Property="Height" Value="30" />
         </Style>
     </Window.Resources>
     
@@ -29,10 +29,10 @@
         </Button>
 
         <StackPanel Grid.Column="0" Grid.Row="1">
-            <Button Style="{StaticResource FoodTypeButton}"></Button>
-            <Button Style="{StaticResource FoodTypeButton}"></Button>
-            <Button Style="{StaticResource FoodTypeButton}"></Button>
-            <Button Style="{StaticResource FoodTypeButton}"></Button>
+            <Button Style="{StaticResource FoodTypeButton}" Content="Combo"></Button>
+            <Button Style="{StaticResource FoodTypeButton}" Content="Burgers"></Button>
+            <Button Style="{StaticResource FoodTypeButton}" Content="Chicken"></Button>
+            <Button Style="{StaticResource FoodTypeButton}" Content="Drinks"></Button>
         </StackPanel>
         
     </Grid>
