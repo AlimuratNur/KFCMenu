@@ -10,6 +10,11 @@ namespace KFCMenu.ViewModel
 {
     internal class MainViewModel : ViewModelBase
     {
+        #region FoodTypes
+        public ICollection<FoodType> FoodTypes { get;  }
+
+        #endregion
+
         #region SelectedDish
         private FoodType _SelectedFoodType;
         public FoodType SelectedFoodType { 
@@ -17,5 +22,10 @@ namespace KFCMenu.ViewModel
             set => Set(ref _SelectedFoodType, value);  }
         #endregion
 
+        public MainViewModel()
+        {
+            FoodTypes = new List<FoodType>();
+
+        }
     }
 }
