@@ -11,9 +11,14 @@
     <Window.Resources>
         <Style x:Key="FoodTypeButton" TargetType="Button">
             <Setter Property="Height" Value="30" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="Background" Value="AliceBlue"/>
+            <Setter Property="BorderBrush" Value="AliceBlue"/>
+            <Setter Property="FontFamily" Value="Ink Free"/>
+            
         </Style>
     </Window.Resources>
-    
+    <Border BorderBrush="#FF000000" BorderThickness="1" CornerRadius="8">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -25,15 +30,16 @@
         </Grid.RowDefinitions>
 
         <Button Grid.Column="0" Grid.Row="0" Margin="14,15" Background="AliceBlue" BorderBrush="Red">
-            <TextBlock Text="KFC" FontFamily="Javanese Text" Margin="10"/>
+            <TextBlock Text="KFC" FontFamily="Ink Free" Margin="10" FontSize="20"/>
         </Button>
 
         <StackPanel Grid.Column="0" Grid.Row="1">
-            <Button Style="{StaticResource FoodTypeButton}" Content="Combo"></Button>
+            <Button Style="{StaticResource FoodTypeButton}" Content="Combo" ></Button>
             <Button Style="{StaticResource FoodTypeButton}" Content="Burgers"></Button>
             <Button Style="{StaticResource FoodTypeButton}" Content="Chicken"></Button>
             <Button Style="{StaticResource FoodTypeButton}" Content="Drinks"></Button>
         </StackPanel>
         
     </Grid>
+    </Border>
 </Window>
