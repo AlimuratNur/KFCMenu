@@ -12,7 +12,7 @@ namespace KFCMenu.ViewModel
     public class MainViewModel : ViewModelBase
     {
         #region Title
-        private string _Title = "window";
+        private string _Title = "KFC Menu Window";
         public string Title { 
             get => _Title; 
             set => Set(ref _Title, value); } 

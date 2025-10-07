@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:KFCMenu"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vm="clr-namespace:KFCMenu.ViewModel"
+    xmlns:mvm="clr-namespace:KFCMenu.ViewModel"
     Title="{Binding Title}"
     Width="800"
     Height="450"
@@ -53,15 +53,24 @@
             </Border>
 
 
-            <StackPanel Grid.Row="1" Grid.Column="0">
+            <!--StackPanel Grid.Row="1" Grid.Column="0">
                 <Button Content="Combos" Style="{StaticResource FoodTypeButton}" />
                 <Button Content="Burgers" Style="{StaticResource FoodTypeButton}" />
                 <Button Content="Chicken" Style="{StaticResource FoodTypeButton}" />
                 <Button Content="Drinks" Style="{StaticResource FoodTypeButton}" />
-            </StackPanel>
+            </StackPanel-->
+            <ListBox
+                Grid.Row="1"
+                Grid.Column="0"
+                ItemsSource="{Binding FoodTypes}"
+                SelectedItem="{Binding SelectedFoodType}">
+                
+            </ListBox>
+
+
 
             <GroupBox Grid.Row="1" Grid.Column="1">
-                <DataGrid ItemsSource="{Binding}" />
+                <DataGrid Margin="-6,0,6,0" ItemsSource="{Binding SelectedFoodType.Diches}" />
             </GroupBox>
         </Grid>
     </Border>
