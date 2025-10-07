@@ -3,10 +3,12 @@ using System.Collections.Generic;
 
 namespace KFCMenu.Models
 {
-    internal class FoodType
+    public class FoodType
     {
-        public string Title { get; }
+        public string? Title { get; set; }
 
-        public ICollection<Dish> Diches { get; set; }
+        public ICollection<Dish>? Diches { get; set; }
+
+
     }
 }
