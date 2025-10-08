@@ -7,9 +7,14 @@ using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using KFCMenu.Services;
 
-namespace KFCMenu.Tests
+namespace KFCMenu.Tests;
+[TestFixture]
+public class JsonServicesDataTests
 {
-    internal class JsonServicesDataTests
+    [Test]
+    public void MainTest()
     {
+        var filePath = "";
     }
 }
+
