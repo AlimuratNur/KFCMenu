@@ -20,7 +20,7 @@ namespace KFCMenu.Services
             _FilePath = filePath;
         }
 
-        public async Task<List<Dish>> LoadAsync(string path) 
+        public async Task<List<Dish>> LoadAsync() 
         {
             if (!File.Exists(_FilePath)) return new List<Dish>();
             using var file = File.OpenRead(_FilePath);

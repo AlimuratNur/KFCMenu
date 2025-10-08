@@ -6,15 +6,25 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using NUnit.Framework.Legacy;
 using KFCMenu.Services;
+using KFCMenu.Models;
 
 namespace KFCMenu.Tests;
 [TestFixture]
 public class JsonServicesDataTests
 {
+
     [Test]
-    public void MainTest()
+    public void ReturnEmptyList()
     {
-        var filePath = "";
+        var path = "Data/data.json";
+        MainTest(new List<Dish>(), path);
+    }
+
+    public void MainTest(List<Dish> expectedDish, string path)
+    {
+        var jsonData = new JsonDataService(path);
+        var realDishes = jsonData.LoadAsync().Result;
+        ClassicAssert.AreEqual(expectedDish, realDishes);
     }
 }
 
