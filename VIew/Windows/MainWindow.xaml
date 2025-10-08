@@ -59,18 +59,34 @@
                 <Button Content="Chicken" Style="{StaticResource FoodTypeButton}" />
                 <Button Content="Drinks" Style="{StaticResource FoodTypeButton}" />
             </StackPanel-->
-            <ListBox
+            <GroupBox
                 Grid.Row="1"
                 Grid.Column="0"
-                ItemsSource="{Binding FoodTypes}"
-                SelectedItem="{Binding SelectedFoodType}">
-                
-            </ListBox>
+                Header="">
+                <ListBox
+                    DisplayMemberPath="Title"
+                    ItemsSource="{Binding FoodTypes}"
+                    SelectedItem="{Binding SelectedFoodType}" />
+            </GroupBox>
 
 
 
-            <GroupBox Grid.Row="1" Grid.Column="1">
-                <DataGrid Margin="-6,0,6,0" ItemsSource="{Binding SelectedFoodType.Diches}" />
+
+            <GroupBox
+                Grid.Row="1"
+                Grid.Column="1"
+                Header="{Binding SelectedFoodType.Title}">
+                <DataGrid
+                    AutoGenerateColumns="False"
+                    CanUserResizeColumns="False"
+                    ItemsSource="{Binding SelectedFoodType.Diches}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Binding="{Binding Title}"
+                            CanUserReorder="False"
+                            Header="Имя" />
+                    </DataGrid.Columns>
+                </DataGrid>
             </GroupBox>
         </Grid>
     </Border>
