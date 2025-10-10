@@ -11,7 +11,7 @@ using System.Windows.Documents;
 
 namespace KFCMenu.Services
 {
-    public class JsonDataService
+    public class JsonDataService<T>
     {
         private readonly string _FilePath;
         
@@ -20,12 +20,12 @@ namespace KFCMenu.Services
             _FilePath = filePath;
         }
 
-        public async Task<List<Dish>> LoadAsync() 
+        public async Task<List<T>> LoadAsync() 
         {
-            if (!File.Exists(_FilePath)) return new List<Dish>();
+            if (!File.Exists(_FilePath)) return new List<T>();
             using var file = File.OpenRead(_FilePath);
-            return await JsonSerializer.DeserializeAsync<List<Dish>>(file) 
-                ?? new List<Dish>();
+            return await JsonSerializer.DeserializeAsync<List<T>>(file) 
+                ?? new List<T>();
         }
     }
 }
