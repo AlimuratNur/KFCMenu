@@ -30,5 +30,14 @@ namespace KFCMenu.Models
                 && this.Price == dish.Price;
 
         }
+
+        public override int GetHashCode() => this.Title.GetHashCode();
+        
+
+        public override string ToString()
+        {
+            return "Title: " + Title + " Description: " + Description + " Price: " ;
+        }
+
     }
 }
