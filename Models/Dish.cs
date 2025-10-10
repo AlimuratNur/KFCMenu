@@ -22,5 +22,13 @@ namespace KFCMenu.Models
             Price = price;
         }
 
+        public override bool Equals(object? obj)
+        {
+            if (obj is null) return false;
+            var dish = (Dish)obj;
+            return this.Title.Equals(dish.Title) 
+                && this.Price == dish.Price;
+
+        }
     }
 }
