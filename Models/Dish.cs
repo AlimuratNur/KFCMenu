@@ -26,12 +26,13 @@ namespace KFCMenu.Models
         {
             if (obj is null) return false;
             var dish = (Dish)obj;
-            return this.Title.Equals(dish.Title) 
-                && this.Price == dish.Price;
-
+            return Title.Equals(dish.Title) &&
+                Description.Equals(dish.Description)
+                && Price.Equals(dish.Price);
         }
 
-        public override int GetHashCode() => this.Title.GetHashCode();
+        public override int GetHashCode() => 
+            Title.GetHashCode() + Description.GetHashCode() + (int)Price;
         
 
         public override string ToString()
