@@ -7,6 +7,7 @@ using KFCMenu.ViewModel.Base;
 using KFCMenu.Models;
 using System.Windows.Data;
 using KFCMenu.Services;
+using System.IO;
 
 namespace KFCMenu.ViewModel
 {
@@ -54,14 +55,14 @@ namespace KFCMenu.ViewModel
         private async void _Initialize()
         {
             var jsonReader = new JsonDataService<Dish>();
-
+            var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data/data.json");//"C:\\Users\\FPS SHOP\\Desktop\\PL\\Cs\\KFCMenu\\Data\\data.json"
             #region combosInit
-            var comboList = await Load(jsonReader, "C:/Users/FPS SHOP/Desktop/PL/Cs/KFCMenu/Data/data.json");
+            var comboList = await Load(jsonReader, filePath);
             _Combos = new FoodType() {Title = "Combos", Diches = comboList.ToArray()};
             SelectedFoodType = _Combos;
             #endregion 
             
-
+            
         }
 
         private  async Task<List<Dish>> Load(JsonDataService<Dish> jsonReader, string filePath) 
