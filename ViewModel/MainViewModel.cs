@@ -5,9 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using KFCMenu.ViewModel.Base;
 using KFCMenu.Models;
-using System.Windows.Data;
 using KFCMenu.Services;
+using System.Windows.Data;
 using System.IO;
+using System.Windows.Input;
+using KFCMenu.Infrastructure.Commands;
+
+
 
 namespace KFCMenu.ViewModel
 {
@@ -42,12 +46,37 @@ namespace KFCMenu.ViewModel
             set => Set(ref _Combos, value);
         }
 
+        private FoodType _Burgers;
+        public FoodType Burgers { get => _Burgers; set => Set(ref _Burgers, value); }
 
+
+        private FoodType _Chickens;
+        public FoodType  Chickens{ get => _Chickens; set => Set(ref _Chickens, value); }
+
+
+        private FoodType _Drinks;
+        public FoodType Drinks { get => _Drinks; set => Set(ref _Drinks, value); }
+
+
+        #endregion
+
+        #region Commands
+        public ICommand ChangePage { get; }
+
+        private bool CanChangePageExecuted(object p) => p is FoodType;
+        private void OnChangePageExecute(object p)
+        {
+            if (!(p is FoodType)) return;
+            SelectedFoodType = (FoodType)p;
+        }
 
         #endregion
 
         public MainViewModel()
         {
+            #region InitCommands
+            ChangePage = new LambdaCommand(OnChangePageExecute,CanChangePageExecuted);
+            #endregion
 
             _Initialize();
         }
@@ -55,15 +84,28 @@ namespace KFCMenu.ViewModel
         private async void _Initialize()
         {
             var jsonReader = new JsonDataService<Dish>();
-            var filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data/data.json");//"C:\\Users\\FPS SHOP\\Desktop\\PL\\Cs\\KFCMenu\\Data\\data.json"
+            
             #region combosInit
-            var comboList = await Load(jsonReader, filePath);
-            _Combos = new FoodType() {Title = "Combos", Diches = comboList.ToArray()};
-            SelectedFoodType = _Combos;
-            #endregion 
-            
-            
+            var comboList = await Load(jsonReader, GetPath("data.json"));
+            Combos = new FoodType() {Title = "Combos", Diches = comboList};
+            SelectedFoodType = Combos;
+            #endregion
+
+            #region BurgerInit
+            Burgers = new FoodType() {Title = "Burgers", Diches = await Load(jsonReader, GetPath("Burgers.json"))};
+            #endregion
+
+            #region ChickensInit
+            Chickens = new FoodType() { Title = "Chickens", Diches = await Load(jsonReader, GetPath("Chickens.json"))};
+            #endregion
+
+            #region DrinksInit
+            Drinks = new FoodType() { Title = "Drinks", Diches = await Load(jsonReader, GetPath("Drinks.json")) };
+            #endregion
         }
+
+        private string GetPath(string fileName) 
+            => Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Data/" + fileName);
 
         private  async Task<List<Dish>> Load(JsonDataService<Dish> jsonReader, string filePath) 
             => await jsonReader.LoadAsync(filePath);

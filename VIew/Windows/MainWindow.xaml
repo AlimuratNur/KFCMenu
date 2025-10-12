@@ -66,19 +66,27 @@
             <StackPanel Grid.Row="1" Grid.Column="0">
                 <Button
                     Name="Combos"
-                    Content="Combos"
+                    Command="{Binding ChangePage}"
+                    CommandParameter="{Binding Combos}"
+                    Content="{Binding Combos.Title}"
                     Style="{StaticResource FoodTypeButton}" />
                 <Button
                     Name="Burgers"
-                    Content="Burgers"
+                    Command="{Binding ChangePage}"
+                    CommandParameter="{Binding Burgers}"
+                    Content="{Binding Burgers.Title}"
                     Style="{StaticResource FoodTypeButton}" />
                 <Button
                     Name="Chickens"
-                    Content="Chickens"
+                    Command="{Binding ChangePage}"
+                    CommandParameter="{Binding Chickens}"
+                    Content="{Binding Chickens.Title}"
                     Style="{StaticResource FoodTypeButton}" />
                 <Button
                     Name="Drinks"
-                    Content="Drinks"
+                    Command="{Binding ChangePage}"
+                    CommandParameter="{Binding Drinks}"
+                    Content="{Binding Drinks.Title}"
                     Style="{StaticResource FoodTypeButton}" />
             </StackPanel>
 
