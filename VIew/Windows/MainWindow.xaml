@@ -12,7 +12,13 @@
     mc:Ignorable="d">
     <Window.Resources>
 
-
+        <Style TargetType="DataGridCell">
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            
+            <Setter Property="Background" Value="AliceBlue" />
+            
+        </Style>
         <Style x:Key="FoodTypeButton" TargetType="Button">
             <Setter Property="Height" Value="30" />
             <Setter Property="Margin" Value="10" />
@@ -58,14 +64,23 @@
 
 
             <StackPanel Grid.Row="1" Grid.Column="0">
-                <Button Content="Combos" Style="{StaticResource FoodTypeButton}" />
-                <Button Content="Burgers" Style="{StaticResource FoodTypeButton}" />
-                <Button Content="Chicken" Style="{StaticResource FoodTypeButton}" />
-                <Button Content="Drinks" Style="{StaticResource FoodTypeButton}" />
+                <Button
+                    Name="Combos"
+                    Content="Combos"
+                    Style="{StaticResource FoodTypeButton}" />
+                <Button
+                    Name="Burgers"
+                    Content="Burgers"
+                    Style="{StaticResource FoodTypeButton}" />
+                <Button
+                    Name="Chickens"
+                    Content="Chickens"
+                    Style="{StaticResource FoodTypeButton}" />
+                <Button
+                    Name="Drinks"
+                    Content="Drinks"
+                    Style="{StaticResource FoodTypeButton}" />
             </StackPanel>
-
-
-
 
 
             <GroupBox
@@ -76,13 +91,36 @@
                     AutoGenerateColumns="False"
                     CanUserResizeColumns="False"
                     IsReadOnly="True"
-                    ItemsSource="{Binding SelectedFoodType.Diches}">
+                    ItemsSource="{Binding SelectedFoodType.Diches}"
+                    RowHeight="80">
                     <DataGrid.Columns>
                         <DataGridTextColumn
                             Binding="{Binding Title}"
                             CanUserReorder="False"
                             Header="Имя" />
+                        <DataGridTextColumn
+                            MaxWidth="200"
+                            Binding="{Binding Description}"
+                            CanUserReorder="False"
+                            Header="Описание">
+
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="Wrap" />
+                                    <Setter Property="TextTrimming" Value="None" />
+                                </Style>
+
+                            </DataGridTextColumn.ElementStyle>
+
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn
+                            Binding="{Binding Price}"
+                            CanUserReorder="False"
+                            Header="Цена" />
                     </DataGrid.Columns>
+
+
                 </DataGrid>
             </GroupBox>
         </Grid>
