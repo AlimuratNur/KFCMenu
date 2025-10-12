@@ -10,13 +10,13 @@ namespace KFCMenu.Models
     {
        
 
-        public string Title { get; }
+        public string Title { get;  }
 
-        public string Description { get; }
+        public string Description { get;  }
 
-        public double Price { get; }
+        public int Price { get; }
 
-        public Dish(string title, string description, double price){
+        public Dish(string title, string description, int price){
             Title = title;
             Description = description;
             Price = price;
@@ -32,7 +32,7 @@ namespace KFCMenu.Models
         }
 
         public override int GetHashCode() => 
-            Title.GetHashCode() + Description.GetHashCode() + (int)Price;
+            Title.GetHashCode() + Description.GetHashCode() + Price;
         
 
         public override string ToString()
