@@ -15,9 +15,9 @@
         <Style TargetType="DataGridCell">
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
-            
+
             <Setter Property="Background" Value="AliceBlue" />
-            
+
         </Style>
         <Style x:Key="FoodTypeButton" TargetType="Button">
             <Setter Property="Height" Value="30" />
