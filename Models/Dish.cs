@@ -24,7 +24,7 @@ namespace KFCMenu.Models
 
         public override bool Equals(object? obj)
         {
-            if (obj is null) return false;
+            if ( !(obj is Dish)) return false;
             var dish = (Dish)obj;
             return Title.Equals(dish.Title) &&
                 Description.Equals(dish.Description)
