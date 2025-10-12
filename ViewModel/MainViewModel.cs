@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using KFCMenu.ViewModel.Base;
 using KFCMenu.Models;
 using System.Windows.Data;
+using KFCMenu.Services;
 
 namespace KFCMenu.ViewModel
 {
@@ -24,24 +25,47 @@ namespace KFCMenu.ViewModel
         
         #endregion
 
-        #region SelectedDish
-        private FoodType? _SelectedFoodType;
+
+        #region SelectedFoodType
+        private FoodType _SelectedFoodType;
         public FoodType SelectedFoodType { 
             get =>  _SelectedFoodType;  
             set => Set(ref _SelectedFoodType, value);  }
         #endregion
 
+
+        #region SelectedPages
+
+        private FoodType _Combos;
+        public FoodType Combos { get => _Combos;
+            set => Set(ref _Combos, value);
+        }
+
+
+
+        #endregion
+
         public MainViewModel()
         {
-            
-            FoodTypes = new List<FoodType>();
-            var dishes = new List<Dish>();
-            dishes.Add(new Dish("MegaCombo", "Cool combo with a lot of chicken and french fries", 10000d));
-            var combo = new FoodType() { Title = "Combo" ,
-                Diches = dishes.ToArray()
-            };
-            
-            FoodTypes.Add(combo);
+
+            _Initialize();
         }
+
+        private async void _Initialize()
+        {
+            var jsonReader = new JsonDataService<Dish>();
+
+            #region combosInit
+            var comboList = await Load(jsonReader, "C:/Users/FPS SHOP/Desktop/PL/Cs/KFCMenu/Data/data.json");
+            _Combos = new FoodType() {Title = "Combos", Diches = comboList.ToArray()};
+            SelectedFoodType = _Combos;
+            #endregion 
+            
+
+        }
+
+        private  async Task<List<Dish>> Load(JsonDataService<Dish> jsonReader, string filePath) 
+            => await jsonReader.LoadAsync(filePath);
+        
     }
 } 
