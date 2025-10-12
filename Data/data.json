@@ -1,8 +1,23 @@
 [
   {
     "Title": "Mega Combo",
-    "Descripion": "Combo with 0,5 pepsi, 20 chicken legs, 20 chiken strips and a big french fries box with 5 type of souce",
+    "Descripion": "Combo with 1L pepsi, 25 chicken legs, 30 chiken strips and a mega big french fries box with 5 type of souce",
     "Price": 25000
+  },
+  {
+    "Title": "Ultra Combo",
+    "Descripion": "Combo with 1L pepsi, 20 chicken legs, 25 chiken strips and a ultra big french fries box with 5 type of souce",
+    "Price": 20000
+  },
+  {
+    "Title": "High Combo",
+    "Descripion": "Combo with 1L pepsi, 15 chicken legs, 20 chiken strips and a big french fries box with 3 type of souce",
+    "Price": 15000
+  },
+  {
+    "Title": "AVG Combo",
+    "Descripion": "Combo with 0,5L pepsi, 10 chicken legs, 13 chiken strips and a french fries box with 1 souce",
+    "Price": 8500
   }
 ]  
 
