@@ -95,41 +95,37 @@
                 Grid.Row="1"
                 Grid.Column="1"
                 Header="{Binding SelectedFoodType.Title}">
-                <DataGrid
-                    AutoGenerateColumns="False"
-                    CanUserResizeColumns="False"
-                    IsReadOnly="True"
+
+                <ListView
+                    VerticalContentAlignment="Center"
                     ItemsSource="{Binding SelectedFoodType.Diches}"
-                    RowHeight="80">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn
-                            Binding="{Binding Title}"
-                            CanUserReorder="False"
-                            Header="Имя" />
-                        <DataGridTextColumn
-                            MaxWidth="200"
-                            Binding="{Binding Description}"
-                            CanUserReorder="False"
-                            Header="Описание">
+                    ScrollViewer.CanContentScroll="False">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
 
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="TextWrapping" Value="Wrap" />
-                                    <Setter Property="TextTrimming" Value="None" />
-                                </Style>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                Width="200"
+                                Margin="6"
+                                Padding="8"
+                                Background="White"
+                                BorderBrush="LightGray"
+                                BorderThickness="1"
+                                CornerRadius="10">
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBlock FontWeight="Bold" Text="{Binding Title}" />
+                                    <TextBlock Text="{Binding Description}" TextWrapping="Wrap" />
+                                    <TextBlock Text="{Binding Price, StringFormat='₸{0}'}" />
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
-                            </DataGridTextColumn.ElementStyle>
-
-                        </DataGridTextColumn>
-
-                        <DataGridTextColumn
-                            Binding="{Binding Price}"
-                            CanUserReorder="False"
-                            Header="Цена" />
-                    </DataGrid.Columns>
-
-
-                </DataGrid>
             </GroupBox>
         </Grid>
     </Border>
