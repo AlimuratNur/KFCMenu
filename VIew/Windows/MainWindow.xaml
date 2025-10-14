@@ -43,12 +43,12 @@
         CornerRadius="8">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200" />
-                <ColumnDefinition />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="75" />
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
 
@@ -135,12 +135,17 @@
             <ListView
                 Grid.Row="1"
                 Grid.Column="1"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Top"
+                HorizontalContentAlignment="Left"
+                BorderBrush="AliceBlue"
                 ItemsSource="{Binding SelectedFoodType.Diches}"
-                ScrollViewer.CanContentScroll="false"
-                ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                ScrollViewer.CanContentScroll="False"
+                ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Vertical" />
+                        <UniformGrid HorizontalAlignment="Stretch" Columns="2" />
+
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
 
@@ -154,7 +159,7 @@
                             BorderBrush="LightGray"
                             BorderThickness="1"
                             CornerRadius="10">
-                            <StackPanel VerticalAlignment="Center">
+                            <StackPanel Width="200" VerticalAlignment="Center">
                                 <TextBlock FontWeight="Bold" Text="{Binding Title}" />
                                 <TextBlock Text="{Binding Description}" TextWrapping="Wrap" />
                                 <TextBlock Text="{Binding Price, StringFormat='₸{0}'}" />
