@@ -23,11 +23,16 @@
             <Setter Property="Height" Value="30" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="Background" Value="AliceBlue" />
-            <Setter Property="BorderBrush" Value="AliceBlue" />
+            <Setter Property="BorderBrush" Value="LightGray" />
             <Setter Property="FontFamily" Value="Ink Free" />
 
+
         </Style>
+
+
     </Window.Resources>
+
+
     <Window.DataContext>
         <mvm:MainViewModel />
     </Window.DataContext>
@@ -43,90 +48,123 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="75" />
-                <RowDefinition />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
-            <Border BorderThickness="1" CornerRadius="8">
-                <Button
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Margin="14,15"
-                    Background="AliceBlue"
-                    BorderBrush="Red">
 
-                    <TextBlock
-                        Margin="10"
-                        FontFamily="Ink Free"
-                        FontSize="20"
-                        Text="KFC" />
-                </Button>
-            </Border>
+
+            <Button
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="14,15"
+                Background="AliceBlue"
+                BorderBrush="Red">
+
+                <TextBlock
+                    Margin="10"
+                    FontFamily="Ink Free"
+                    FontSize="20"
+                    Text="KFC" />
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+
 
 
             <StackPanel Grid.Row="1" Grid.Column="0">
+
                 <Button
                     Name="Combos"
                     Command="{Binding ChangePage}"
                     CommandParameter="{Binding Combos}"
                     Content="{Binding Combos.Title}"
-                    Style="{StaticResource FoodTypeButton}" />
+                    Style="{StaticResource FoodTypeButton}">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
                 <Button
                     Name="Burgers"
                     Command="{Binding ChangePage}"
                     CommandParameter="{Binding Burgers}"
                     Content="{Binding Burgers.Title}"
-                    Style="{StaticResource FoodTypeButton}" />
+                    Style="{StaticResource FoodTypeButton}">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
                 <Button
                     Name="Chickens"
                     Command="{Binding ChangePage}"
                     CommandParameter="{Binding Chickens}"
                     Content="{Binding Chickens.Title}"
-                    Style="{StaticResource FoodTypeButton}" />
+                    Style="{StaticResource FoodTypeButton}">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
                 <Button
                     Name="Drinks"
                     Command="{Binding ChangePage}"
                     CommandParameter="{Binding Drinks}"
                     Content="{Binding Drinks.Title}"
-                    Style="{StaticResource FoodTypeButton}" />
+                    Style="{StaticResource FoodTypeButton}">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10" />
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+
+
             </StackPanel>
 
 
-            <GroupBox
+
+            <ListView
                 Grid.Row="1"
                 Grid.Column="1"
-                Header="{Binding SelectedFoodType.Title}">
+                ItemsSource="{Binding SelectedFoodType.Diches}"
+                ScrollViewer.CanContentScroll="false"
+                ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
 
-                <ListView
-                    VerticalContentAlignment="Center"
-                    ItemsSource="{Binding SelectedFoodType.Diches}"
-                    ScrollViewer.CanContentScroll="False">
-                    <ListView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Horizontal" />
-                        </ItemsPanelTemplate>
-                    </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            Width="200"
+                            Margin="6"
+                            Padding="8"
+                            Background="White"
+                            BorderBrush="LightGray"
+                            BorderThickness="1"
+                            CornerRadius="10">
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock FontWeight="Bold" Text="{Binding Title}" />
+                                <TextBlock Text="{Binding Description}" TextWrapping="Wrap" />
+                                <TextBlock Text="{Binding Price, StringFormat='₸{0}'}" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Border
-                                Width="200"
-                                Margin="6"
-                                Padding="8"
-                                Background="White"
-                                BorderBrush="LightGray"
-                                BorderThickness="1"
-                                CornerRadius="10">
-                                <StackPanel VerticalAlignment="Center">
-                                    <TextBlock FontWeight="Bold" Text="{Binding Title}" />
-                                    <TextBlock Text="{Binding Description}" TextWrapping="Wrap" />
-                                    <TextBlock Text="{Binding Price, StringFormat='₸{0}'}" />
-                                </StackPanel>
-                            </Border>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
 
-            </GroupBox>
         </Grid>
     </Border>
 </Window>
