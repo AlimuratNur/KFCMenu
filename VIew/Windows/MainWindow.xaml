@@ -186,7 +186,9 @@
                                     Padding="23,4"
                                     Background="AliceBlue"
                                     BorderBrush="DarkGray"
+                                    Command="{Binding AddDishToCard}"
                                     Content="Заказать">
+
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="10" />
@@ -199,6 +201,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
+            <TextBlock Text="{Binding FoodInCartCount}" Grid.Column="1" Margin="10,17,600,17" ></TextBlock>
 
         </Grid>
     </Border>

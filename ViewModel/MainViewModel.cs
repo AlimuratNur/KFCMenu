@@ -60,6 +60,11 @@ namespace KFCMenu.ViewModel
 
         #endregion
 
+        #region Food In Cart Count
+        private int _FoodInCartCount = 0;
+        public int FoodInCartCount { get => _FoodInCartCount; set => Set(ref _FoodInCartCount, value); }
+        #endregion
+
         #region Commands
         public ICommand ChangePage { get; }
 
@@ -70,12 +75,17 @@ namespace KFCMenu.ViewModel
             SelectedFoodType = (FoodType)p;
         }
 
+
+
+        public ICommand AddDishToCard { get; }
+        
         #endregion
 
         public MainViewModel()
         {
             #region InitCommands
             ChangePage = new LambdaCommand(OnChangePageExecute,CanChangePageExecuted);
+            AddDishToCard = new LambdaCommand(p =>  FoodInCartCount += 1 , p => true);
             #endregion
 
             _Initialize();
@@ -102,6 +112,7 @@ namespace KFCMenu.ViewModel
             #region DrinksInit
             Drinks = new FoodType() { Title = "Drinks", Diches = await Load(jsonReader, GetPath("Drinks.json")) };
             #endregion
+
         }
 
         private string GetPath(string fileName) 
