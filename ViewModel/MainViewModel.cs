@@ -60,24 +60,27 @@ namespace KFCMenu.ViewModel
 
         #endregion
 
-        #region Food In Cart Count
+        #region -------------------------------------------Food In Cart Count-------------------------------------------
         private int _FoodInCartCount = 0;
         public int FoodInCartCount { get => _FoodInCartCount; set => Set(ref _FoodInCartCount, value); }
         #endregion
 
-        #region Commands
+
+
+        #region -------------------------------------------Commands-------------------------------------------
         public ICommand ChangePage { get; }
 
         private bool CanChangePageExecuted(object p) => p is FoodType;
         private void OnChangePageExecute(object p)
         {
-            if (!(p is FoodType)) return;
             SelectedFoodType = (FoodType)p;
         }
 
 
+        public ICommand AddDishToCart { get; }
 
-        public ICommand AddDishToCard { get; }
+        private bool CanAddDishToCartExecuted(object p) => true;
+        private void OnAddDishToCartExecute(object p) => FoodInCartCount = FoodInCartCount + 1; 
         
         #endregion
 
@@ -85,7 +88,7 @@ namespace KFCMenu.ViewModel
         {
             #region InitCommands
             ChangePage = new LambdaCommand(OnChangePageExecute,CanChangePageExecuted);
-            AddDishToCard = new LambdaCommand(p =>  FoodInCartCount += 1 , p => true);
+            AddDishToCart = new LambdaCommand(OnAddDishToCartExecute, CanAddDishToCartExecuted);
             #endregion
 
             _Initialize();

@@ -31,6 +31,10 @@
         </Style>
 
 
+        <Style x:Key="AddToCartButton" TargetType="Button">
+            <Setter Property="Command" Value="{Binding AddDishToCart}" />
+        </Style>
+
     </Window.Resources>
 
 
@@ -177,16 +181,21 @@
                             <StackPanel VerticalAlignment="Center">
                                 <TextBlock
                                     HorizontalAlignment="Center"
+                                    FontFamily="Ink Free"
                                     FontWeight="Bold"
                                     Text="{Binding Title}" />
-                                <TextBlock Text="{Binding Description}" TextWrapping="Wrap" />
+                                <TextBlock
+                                    FontFamily="Ink Free"
+                                    Text="{Binding Description}"
+                                    TextWrapping="Wrap" />
                                 <TextBlock HorizontalAlignment="Center" Text="{Binding Price, StringFormat='₸{0}'}" />
                                 <Button
                                     Margin="20,5"
                                     Padding="23,4"
                                     Background="AliceBlue"
                                     BorderBrush="DarkGray"
-                                    Command="{Binding AddDishToCard}"
+                                    Command="{Binding DataContext.AddDishToCart, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                    CommandParameter="{Binding}"
                                     Content="Заказать">
 
                                     <Button.Resources>
@@ -201,7 +210,17 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <TextBlock Text="{Binding FoodInCartCount}" Grid.Column="1" Margin="10,17,600,17" ></TextBlock>
+
+
+
+            <TextBlock
+                Grid.Column="1"
+                Margin="5,17,550,17"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontFamily="Georgia"
+                FontSize="23"
+                Text="{Binding FoodInCartCount}" />
 
         </Grid>
     </Border>
