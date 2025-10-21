@@ -24,6 +24,18 @@
 
 
 	<ItemGroup>
+	  <None Remove="Fonts\Friz Quadrata Bold.otf" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <Resource Include="Fonts\Friz Quadrata Bold.otf">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
+	</ItemGroup>
+
+
+	<ItemGroup>
 	  <None Update="Data\Burgers.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>

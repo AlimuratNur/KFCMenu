@@ -10,6 +10,8 @@
     Title="{Binding Title}"
     Width="800"
     Height="600"
+    IsManipulationEnabled="False"
+    ResizeMode="NoResize"
     mc:Ignorable="d">
     <Window.Resources>
 
@@ -25,7 +27,7 @@
             <Setter Property="Margin" Value="10" />
             <Setter Property="Background" Value="AliceBlue" />
             <Setter Property="BorderBrush" Value="LightGray" />
-            <Setter Property="FontFamily" Value="Ink Free" />
+            <Setter Property="FontFamily" Value="{StaticResource KFC Font}" />
 
 
         </Style>
@@ -67,7 +69,7 @@
 
                 <TextBlock
                     Margin="10"
-                    FontFamily="Ink Free"
+                    FontFamily="{StaticResource KFC Font}"
                     FontSize="20"
                     Text="KFC" />
                 <Button.Resources>
@@ -181,11 +183,11 @@
                             <StackPanel VerticalAlignment="Center">
                                 <TextBlock
                                     HorizontalAlignment="Center"
-                                    FontFamily="Ink Free"
+                                    FontFamily="{StaticResource KFC Font}"
                                     FontWeight="Bold"
                                     Text="{Binding Title}" />
                                 <TextBlock
-                                    FontFamily="Ink Free"
+                                    FontFamily="{StaticResource KFC Font}"
                                     Text="{Binding Description}"
                                     TextWrapping="Wrap" />
                                 <TextBlock HorizontalAlignment="Center" Text="{Binding Price, StringFormat='₸{0}'}" />
