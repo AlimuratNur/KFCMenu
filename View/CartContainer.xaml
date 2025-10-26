@@ -5,15 +5,39 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:KFCMenu.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mvm="clr-namespace:KFCMenu.ViewModel"
     d:DesignHeight="450"
     d:DesignWidth="350"
     mc:Ignorable="d">
+    <UserControl.DataContext>
+        <mvm:CartViewModel />
+    </UserControl.DataContext>
+
     <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+
         <TextBlock
+            Grid.Row="0"
             HorizontalAlignment="Center"
             FontFamily="{StaticResource KFC Font}"
             FontSize="25"
             Text="Cart" />
+
+        <ListBox Grid.Row="1" ItemsSource="{Binding Dishes}">
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Title}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
 
     </Grid>
 </UserControl>

@@ -220,7 +220,7 @@
                 Margin="5,17,550,17"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                FontFamily="Georgia"
+                FontFamily="{StaticResource KFC Font}"
                 FontSize="23"
                 Text="{Binding FoodInCartCount}" />
 
