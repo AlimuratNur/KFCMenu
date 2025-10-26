@@ -33,6 +33,7 @@ namespace KFCMenu.ViewModel
 
         #region SelectedFoodType
         private FoodType _SelectedFoodType;
+
         public FoodType SelectedFoodType { 
             get =>  _SelectedFoodType;  
             set => Set(ref _SelectedFoodType, value);  }
@@ -42,9 +43,7 @@ namespace KFCMenu.ViewModel
         #region SelectedPages
 
         private FoodType _Combos;
-        public FoodType Combos { get => _Combos;
-            set => Set(ref _Combos, value);
-        }
+        public FoodType Combos { get => _Combos; set => Set(ref _Combos, value);}
 
         private FoodType _Burgers;
         public FoodType Burgers { get => _Burgers; set => Set(ref _Burgers, value); }
