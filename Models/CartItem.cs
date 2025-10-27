@@ -21,15 +21,16 @@ namespace KFCMenu.Models
 
         public double TotalPrice => ItemCount * DishObject.Price;
 
-        public override int GetHashCode()
-        {
-            return DishObject.GetHashCode();
-        }
+        public override int GetHashCode() => DishObject.GetHashCode();
+        
+
         public override bool Equals(object? obj)
         {
             if(obj is null) return false;
-            if(obj is CartItem )return this.GetHashCode().Equals(((CartItem)obj).GetHashCode() );
-            return false;
+            if ( !(obj is CartItem))return false;
+            
+            var cartItem= (CartItem) obj;
+            return this.DishObject.Equals(cartItem.DishObject);
         }
     }
 }
