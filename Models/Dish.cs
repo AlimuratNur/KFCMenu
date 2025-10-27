@@ -8,7 +8,6 @@ namespace KFCMenu.Models
 {
     public class Dish
     {
-       
 
         public string Title { get;  }
 
