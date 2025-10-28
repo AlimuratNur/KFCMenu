@@ -1,6 +1,8 @@
-﻿using KFCMenu.VIew;
-using KFCMenu.ViewModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -11,19 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
-namespace KFCMenu
+namespace KFCMenu.VIew
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для MenuPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MenuPage : Page
     {
-        public MainWindow()
+        public MenuPage()
         {
-
             InitializeComponent();
-            Content = new MenuPage();
         }
     }
 }

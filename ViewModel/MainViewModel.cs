@@ -21,107 +21,18 @@ namespace KFCMenu.ViewModel
         private string _Title = "KFC Menu Window";
         public string Title { 
             get => _Title; 
-            set => Set(ref _Title, value); } 
-        #endregion
-
-
-        #region FoodTypes
-        public ICollection<FoodType> FoodTypes { get;  }
-        
-        #endregion
-
-
-        #region SelectedFoodType
-        private FoodType _SelectedFoodType;
-
-        public FoodType SelectedFoodType { 
-            get =>  _SelectedFoodType;  
-            set => Set(ref _SelectedFoodType, value);  }
-        #endregion
-
-
-        #region SelectedPages
-
-        private FoodType _Combos;
-        public FoodType Combos { get => _Combos; set => Set(ref _Combos, value);}
-
-        private FoodType _Burgers;
-        public FoodType Burgers { get => _Burgers; set => Set(ref _Burgers, value); }
-
-
-        private FoodType _Chickens;
-        public FoodType  Chickens{ get => _Chickens; set => Set(ref _Chickens, value); }
-
-
-        private FoodType _Drinks;
-        public FoodType Drinks { get => _Drinks; set => Set(ref _Drinks, value); }
-
-
-        #endregion
-
-        #region -------------------------------------------Food In Cart Count-------------------------------------------
-        private int _FoodInCartCount = 0;
-        public int FoodInCartCount { get => _FoodInCartCount; set => Set(ref _FoodInCartCount, value); }
+            set => Set(ref _Title, value); }
         #endregion
 
 
 
-        #region -------------------------------------------Commands-------------------------------------------
-        public ICommand ChangePage { get; }
-
-        private bool CanChangePageExecuted(object p) => p is FoodType;
-        private void OnChangePageExecute(object p)
-        {
-            SelectedFoodType = (FoodType)p;
-        }
-
-
-        public ICommand AddDishToCart { get; }
-
-        private bool CanAddDishToCartExecuted(object p) => true;
-        private void OnAddDishToCartExecute(object p) => FoodInCartCount = FoodInCartCount + 1; 
-        
-        #endregion
 
         public MainViewModel()
         {
-            #region InitCommands
-            ChangePage = new LambdaCommand(OnChangePageExecute,CanChangePageExecuted);
-            AddDishToCart = new LambdaCommand(OnAddDishToCartExecute, CanAddDishToCartExecuted);
-            #endregion
-
-            _Initialize();
         }
-
         private async void _Initialize()
         {
-            var jsonReader = new JsonDataService<Dish>();
             
-            #region combosInit
-            var comboList = await Load(jsonReader, GetPath("data.json"));
-            Combos = new FoodType() {Title = "Combos", Diches = comboList};
-            SelectedFoodType = Combos;
-            #endregion
-
-            #region BurgerInit
-            Burgers = new FoodType() {Title = "Burgers", Diches = await Load(jsonReader, GetPath("Burgers.json"))};
-            #endregion
-
-            #region ChickensInit
-            Chickens = new FoodType() { Title = "Chickens", Diches = await Load(jsonReader, GetPath("Chickens.json"))};
-            #endregion
-
-            #region DrinksInit
-            Drinks = new FoodType() { Title = "Drinks", Diches = await Load(jsonReader, GetPath("Drinks.json")) };
-            #endregion
-
         }
-
-        private string GetPath(string fileName) 
-            => Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"Data/" + fileName);
-
-        private  async Task<List<Dish>> Load(JsonDataService<Dish> jsonReader, string filePath) 
-            => await jsonReader.LoadAsync(filePath);
-        
     }
 } 
