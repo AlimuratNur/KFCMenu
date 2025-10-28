@@ -2,6 +2,7 @@
 using KFCMenu.Models;
 using KFCMenu.Services;
 using KFCMenu.ViewModel.Base;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,6 +28,27 @@ namespace KFCMenu.ViewModel
             set => Set(ref _SelectedFoodType, value);
         }
         #endregion
+
+
+        #region -------------------------------------------SelectedPages-------------------------------------------
+
+        private FoodType _Combos;
+        public FoodType Combos { get => _Combos; set => Set(ref _Combos, value); }
+
+        private FoodType _Burgers;
+        public FoodType Burgers { get => _Burgers; set => Set(ref _Burgers, value); }
+
+
+        private FoodType _Chickens;
+        public FoodType Chickens { get => _Chickens; set => Set(ref _Chickens, value); }
+
+
+        private FoodType _Drinks;
+        public FoodType Drinks { get => _Drinks; set => Set(ref _Drinks, value); }
+
+
+        #endregion
+
 
         #region -------------------------------------------Food In Cart Count-------------------------------------------
         private int _FoodInCartCount = 0;
@@ -67,26 +89,20 @@ namespace KFCMenu.ViewModel
 
             #region combosInit
             var comboList = await Load(jsonReader, GetPath("data.json"));
-            FoodTypes.Add( new FoodType() { Title = "Combos", Diches = comboList });
-            SelectedFoodType = FoodTypes.Last();
+            Combos = new FoodType() { Title = "Combos", Diches = comboList };
+            SelectedFoodType = Combos;
             #endregion
 
             #region BurgerInit
-            FoodTypes.Add(new FoodType() 
-            { Title = "Burgers", 
-                Diches = await Load(jsonReader, GetPath("Burgers.json"))});
+            Burgers = new FoodType() { Title = "Burgers", Diches = await Load(jsonReader, GetPath("Burgers.json")) };
             #endregion
 
             #region ChickensInit
-            FoodTypes.Add(new FoodType() 
-            { Title = "Chickens", 
-                Diches = await Load(jsonReader, GetPath("Chickens.json"))});
+            Chickens = new FoodType() { Title = "Chickens", Diches = await Load(jsonReader, GetPath("Chickens.json")) };
             #endregion
 
             #region DrinksInit
-            FoodTypes.Add(new FoodType() 
-            { Title = "Drinks", 
-                Diches = await Load(jsonReader, GetPath("Drinks.json"))});
+            Drinks = new FoodType() { Title = "Drinks", Diches = await Load(jsonReader, GetPath("Drinks.json")) };
             #endregion
 
         }

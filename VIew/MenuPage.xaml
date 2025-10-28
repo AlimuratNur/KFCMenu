@@ -98,8 +98,8 @@
             <Button
                 Name="Combos"
                 Command="{Binding ChangePage}"
-                CommandParameter="{Binding FoodTypes[0]}"
-                Content="{Binding FoodTypes[0].Title}"
+                CommandParameter="{Binding Combos}"
+                Content="{Binding Combos.Title}"
                 Style="{StaticResource FoodTypeButton}">
                 <Button.Resources>
                     <Style TargetType="Border">
@@ -110,8 +110,8 @@
             <Button
                 Name="Burgers"
                 Command="{Binding ChangePage}"
-                CommandParameter="{Binding FoodTypes[1]}"
-                Content="{Binding FoodTypes[1].Title}"
+                CommandParameter="{Binding Burgers}"
+                Content="{Binding Burgers.Title}"
                 Style="{StaticResource FoodTypeButton}">
                 <Button.Resources>
                     <Style TargetType="Border">
@@ -122,8 +122,8 @@
             <Button
                 Name="Chickens"
                 Command="{Binding ChangePage}"
-                CommandParameter="{Binding FoodTypes[2]}"
-                Content="{Binding FoodTypes[2].Title}"
+                CommandParameter="{Binding Chickens}"
+                Content="{Binding Chickens.Title}"
                 Style="{StaticResource FoodTypeButton}">
                 <Button.Resources>
                     <Style TargetType="Border">
@@ -135,8 +135,8 @@
             <Button
                 Name="Drinks"
                 Command="{Binding ChangePage}"
-                CommandParameter="{Binding FoodTypes[3]}"
-                Content="{Binding FoodTypes[3].Title}"
+                CommandParameter="{Binding Drinks}"
+                Content="{Binding Drinks.Title}"
                 Style="{StaticResource FoodTypeButton}">
                 <Button.Resources>
                     <Style TargetType="Border">
