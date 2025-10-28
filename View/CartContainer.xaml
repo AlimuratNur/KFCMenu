@@ -6,38 +6,44 @@
     xmlns:local="clr-namespace:KFCMenu.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvm="clr-namespace:KFCMenu.ViewModel"
-    d:DesignHeight="450"
-    d:DesignWidth="350"
+    d:DesignHeight="600"
+    d:DesignWidth="800"
     mc:Ignorable="d">
     <UserControl.DataContext>
         <mvm:CartViewModel />
     </UserControl.DataContext>
+    <Grid>
+        <Border>
+            <Border.Effect>
+                <BlurEffect KernelType="Gaussian" Radius="5" />
+            </Border.Effect>
+        </Border>
+        <Grid Margin="150" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
-    <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
 
+            <TextBlock
+                Grid.Row="0"
+                HorizontalAlignment="Center"
+                FontFamily="{StaticResource KFC Font}"
+                FontSize="25"
+                Text="Cart" />
 
-        <TextBlock
-            Grid.Row="0"
-            HorizontalAlignment="Center"
-            FontFamily="{StaticResource KFC Font}"
-            FontSize="25"
-            Text="Cart" />
+            <ListBox Grid.Row="1" ItemsSource="{Binding Dishes.CartItems}">
 
-        <ListBox Grid.Row="1" ItemsSource="{Binding Dishes}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Title}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
 
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Title}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
+            </ListBox>
 
-        </ListBox>
-
+        </Grid>
     </Grid>
 </UserControl>
