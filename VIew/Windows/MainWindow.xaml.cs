@@ -21,9 +21,7 @@ namespace KFCMenu
     {
         public MainWindow()
         {
-
             InitializeComponent();
-            Content = new MenuPage();
         }
     }
 }
