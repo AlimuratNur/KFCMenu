@@ -15,7 +15,8 @@
 
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
-
+	
+	
 	<ItemGroup>
 		<Content Include="*.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -30,7 +31,7 @@
 
 	<ItemGroup>
 	  <Resource Include="Fonts\Friz Quadrata Bold.otf">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Resource>
 	</ItemGroup>
 

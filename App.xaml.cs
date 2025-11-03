@@ -14,7 +14,7 @@ namespace KFCMenu
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            InitializeComponent();
+            
             MainWindow = new MainWindow()
             {
                 DataContext = new MainViewModel()
@@ -22,6 +22,11 @@ namespace KFCMenu
             MainWindow.Show();
             base.OnStartup(e);
             
+        }
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+
         }
     }
 
