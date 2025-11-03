@@ -1,16 +1,15 @@
 ﻿<Window
-    x:Class="KFCMenu.MainWindow"
+    x:Class="KFCMenu.View.Windows.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:KFCMenu"
+    xmlns:local="clr-namespace:KFCMenu.View.Windows"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvm="clr-namespace:KFCMenu.ViewModel"
-    xmlns:pages="clr-namespace:KFCMenu.VIew"
+    xmlns:pages="clr-namespace:KFCMenu.View"
     Title="{Binding Title}"
     Width="800"
     Height="600"
-    IsManipulationEnabled="False"
     ResizeMode="NoResize"
     mc:Ignorable="d">
 
@@ -18,13 +17,13 @@
         <mvm:MainViewModel />
     </Window.DataContext>
 
-
     <ContentControl Content="{Binding CurrentViewModel}">
         <ContentControl.Resources>
             <DataTemplate DataType="{x:Type mvm:MenuPageViewModel}">
-                <pages:MenuPage/>
+                <pages:MenuPage />
             </DataTemplate>
         </ContentControl.Resources>
     </ContentControl>
+
 
 </Window>

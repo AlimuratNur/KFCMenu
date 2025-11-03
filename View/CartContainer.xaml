@@ -9,6 +9,8 @@
     d:DesignHeight="600"
     d:DesignWidth="800"
     mc:Ignorable="d">
+
+
     <UserControl.DataContext>
         <mvm:CartViewModel />
     </UserControl.DataContext>

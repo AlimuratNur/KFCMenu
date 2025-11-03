@@ -36,12 +36,11 @@ namespace KFCMenu.ViewModel
 
         public MainViewModel()
         {
-            CurrentViewModel = new MenuPageViewModel();
             _Initialize();
         }
         private async void _Initialize()
         {
-            
+            CurrentViewModel = new MenuPageViewModel();
         }
     }
 } 
