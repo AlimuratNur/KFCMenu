@@ -28,7 +28,11 @@
             <Setter Property="BorderBrush" Value="LightGray" />
             <Setter Property="FontFamily" Value="{StaticResource KFC Font}" />
             <Setter Property="Command" Value="{Binding ChangePage}" />
-
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10" />
+                </Style>
+            </Style.Resources>
         </Style>
 
 
@@ -100,47 +104,23 @@
                 Name="Combos"
                 CommandParameter="{Binding Combos}"
                 Content="{Binding Combos.Title}"
-                Style="{StaticResource FoodTypeButton}">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="10" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+                Style="{StaticResource FoodTypeButton}" />
             <Button
                 Name="Burgers"
                 CommandParameter="{Binding Burgers}"
                 Content="{Binding Burgers.Title}"
-                Style="{StaticResource FoodTypeButton}">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="10" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+                Style="{StaticResource FoodTypeButton}" />
             <Button
                 Name="Chickens"
                 CommandParameter="{Binding Chickens}"
                 Content="{Binding Chickens.Title}"
-                Style="{StaticResource FoodTypeButton}">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="10" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+                Style="{StaticResource FoodTypeButton}" />
 
             <Button
                 Name="Drinks"
                 CommandParameter="{Binding Drinks}"
                 Content="{Binding Drinks.Title}"
-                Style="{StaticResource FoodTypeButton}">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="10" />
-                    </Style>
-                </Button.Resources>
-            </Button>
+                Style="{StaticResource FoodTypeButton}" />
         </StackPanel>
 
 
