@@ -19,13 +19,15 @@
             <Setter Property="Background" Value="AliceBlue" />
 
         </Style>
+
+
         <Style x:Key="FoodTypeButton" TargetType="Button">
             <Setter Property="Height" Value="30" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="Background" Value="AliceBlue" />
             <Setter Property="BorderBrush" Value="LightGray" />
             <Setter Property="FontFamily" Value="{StaticResource KFC Font}" />
-
+            <Setter Property="Command" Value="{Binding ChangePage}" />
 
         </Style>
 
@@ -96,7 +98,6 @@
 
             <Button
                 Name="Combos"
-                Command="{Binding ChangePage}"
                 CommandParameter="{Binding Combos}"
                 Content="{Binding Combos.Title}"
                 Style="{StaticResource FoodTypeButton}">
@@ -108,7 +109,6 @@
             </Button>
             <Button
                 Name="Burgers"
-                Command="{Binding ChangePage}"
                 CommandParameter="{Binding Burgers}"
                 Content="{Binding Burgers.Title}"
                 Style="{StaticResource FoodTypeButton}">
@@ -120,7 +120,6 @@
             </Button>
             <Button
                 Name="Chickens"
-                Command="{Binding ChangePage}"
                 CommandParameter="{Binding Chickens}"
                 Content="{Binding Chickens.Title}"
                 Style="{StaticResource FoodTypeButton}">
@@ -133,7 +132,6 @@
 
             <Button
                 Name="Drinks"
-                Command="{Binding ChangePage}"
                 CommandParameter="{Binding Drinks}"
                 Content="{Binding Drinks.Title}"
                 Style="{StaticResource FoodTypeButton}">
@@ -198,6 +196,7 @@
                                         <Setter Property="CornerRadius" Value="10" />
                                     </Style>
                                 </Button.Resources>
+
                             </Button>
                         </StackPanel>
                     </Border>
