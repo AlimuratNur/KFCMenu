@@ -2,6 +2,7 @@
 using KFCMenu.Models;
 using KFCMenu.Services;
 using KFCMenu.Stores;
+using KFCMenu.View;
 using KFCMenu.ViewModel.Base;
 using Newtonsoft.Json;
 using System;
@@ -16,7 +17,7 @@ namespace KFCMenu.ViewModel
 {
     public class MenuPageViewModel : ViewModelBase
     {   
-        public ICollection<FoodType> FoodTypes;
+        public DishCart CartItems;
 
 
         #region -------------------------------------------SelectedFoodType-------------------------------------------
@@ -68,11 +69,20 @@ namespace KFCMenu.ViewModel
 
         public ICommand AddDishToCart { get; }
 
-        private bool CanAddDishToCartExecuted(object p) => true;
-        private void OnAddDishToCartExecute(object p) => FoodInCartCount = FoodInCartCount + 1;
+        private bool CanAddDishToCartExecuted(object p) => p is Dish;
+        private void OnAddDishToCartExecute(object p) 
+        {
+            var dish = (Dish)p;
+            var cartItem = new CartItem(1,dish);
+            CartItems.Add(cartItem,1);
+            FoodInCartCount = FoodInCartCount + 1; 
+        }
 
 
         public ICommand NavigateToCartViewModel { get; }
+
+
+
 
         #endregion
 
@@ -86,7 +96,7 @@ namespace KFCMenu.ViewModel
             #endregion
 
 
-            FoodTypes = new List<FoodType>(4);
+            
             _Initialize();
         }
 
@@ -112,6 +122,8 @@ namespace KFCMenu.ViewModel
             #region DrinksInit
             Drinks = new FoodType() { Title = "Drinks", Diches = await Load(jsonReader, GetPath("Drinks.json")) };
             #endregion
+
+            CartItems = new DishCart();
 
         }
 

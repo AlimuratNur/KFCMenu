@@ -9,5 +9,7 @@ namespace KFCMenu.View
         {
             InitializeComponent();
         }
+
+        
     }
 }

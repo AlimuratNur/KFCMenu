@@ -11,27 +11,39 @@
     mc:Ignorable="d">
 
 
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="White" />
+
+
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10" />
+                    <Setter Property="BorderBrush" Value="White" />
+                </Style>
+            </Style.Resources>
+        </Style>
+    </UserControl.Resources>
 
     <Grid Background="White">
 
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
+            <RowDefinition Height="100" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
         <Button
             Grid.Row="0"
-            Width="25"
-            Height="25"
-            Margin="300,0,10,0"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Center"
+            Width="55"
+            Height="60"
+            Margin="700,20,25,20"
             Command="{Binding OnMenuPage}"
             Content="Exit" />
 
         <TextBlock
             Grid.Row="0"
+            Margin="14,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             FontFamily="{StaticResource KFC Font}"

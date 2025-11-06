@@ -81,7 +81,8 @@
         <Button
             Grid.Row="0"
             Grid.Column="1"
-            Margin="600,20,25,20"
+            MinWidth="55"
+            Margin="580,20,25,20"
             Background="AliceBlue"
             BorderBrush="White"
             Command="{Binding NavigateToCartViewModel}">
