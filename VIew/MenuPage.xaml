@@ -41,9 +41,7 @@
         </Style>
     </UserControl.Resources>
 
-    <UserControl.DataContext>
-        <mv:MenuPageViewModel />
-    </UserControl.DataContext>
+
 
 
 
@@ -85,13 +83,15 @@
             Grid.Column="1"
             Margin="600,20,25,20"
             Background="AliceBlue"
-            BorderBrush="White">
+            BorderBrush="White"
+            Command="{Binding NavigateToCartViewModel}">
             <fawesome:ImageAwesome Margin="10" Icon="Solid_ShoppingCart" />
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10" />
                 </Style>
             </Button.Resources>
+
         </Button>
 
 
@@ -169,7 +169,7 @@
                                 BorderBrush="DarkGray"
                                 Command="{Binding DataContext.AddDishToCart, RelativeSource={RelativeSource AncestorType=ListView}}"
                                 CommandParameter="{Binding}"
-                                Content="Заказать">
+                                Content="Добавить">
 
                                 <Button.Resources>
                                     <Style TargetType="Border">

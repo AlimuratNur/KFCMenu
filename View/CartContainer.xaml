@@ -11,41 +11,45 @@
     mc:Ignorable="d">
 
 
-    <UserControl.DataContext>
-        <mvm:CartViewModel />
-    </UserControl.DataContext>
-    <Grid>
-        <Border>
-            <Border.Effect>
-                <BlurEffect KernelType="Gaussian" Radius="5" />
-            </Border.Effect>
-        </Border>
-        <Grid Margin="150" Background="White">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition />
-            </Grid.RowDefinitions>
+
+    <Grid Background="White">
 
 
-            <TextBlock
-                Grid.Row="0"
-                HorizontalAlignment="Center"
-                FontFamily="{StaticResource KFC Font}"
-                FontSize="25"
-                Text="Cart" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
 
-            <ListBox Grid.Row="1" ItemsSource="{Binding Dishes.CartItems}">
+        <Button
+            Grid.Row="0"
+            Width="25"
+            Height="25"
+            Margin="300,0,10,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Command="{Binding OnMenuPage}"
+            Content="Exit" />
 
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding Title}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
+        <TextBlock
+            Grid.Row="0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontFamily="{StaticResource KFC Font}"
+            FontSize="25"
+            Text="Cart" />
 
-            </ListBox>
+        <ListBox Grid.Row="1" ItemsSource="{Binding Dishes.CartItems}">
 
-        </Grid>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Title}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
+
+
     </Grid>
 </UserControl>

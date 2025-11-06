@@ -1,6 +1,7 @@
 ﻿using KFCMenu.Infrastructure.Commands;
 using KFCMenu.Models;
 using KFCMenu.Services;
+using KFCMenu.Stores;
 using KFCMenu.ViewModel.Base;
 using Newtonsoft.Json;
 using System;
@@ -16,7 +17,6 @@ namespace KFCMenu.ViewModel
     public class MenuPageViewModel : ViewModelBase
     {   
         public ICollection<FoodType> FoodTypes;
-
 
 
         #region -------------------------------------------SelectedFoodType-------------------------------------------
@@ -38,7 +38,6 @@ namespace KFCMenu.ViewModel
         private FoodType _Burgers;
         public FoodType Burgers { get => _Burgers; set => Set(ref _Burgers, value); }
 
-
         private FoodType _Chickens;
         public FoodType Chickens { get => _Chickens; set => Set(ref _Chickens, value); }
 
@@ -55,7 +54,9 @@ namespace KFCMenu.ViewModel
         public int FoodInCartCount { get => _FoodInCartCount; set => Set(ref _FoodInCartCount, value); }
         #endregion
 
+
         #region -------------------------------------------Commands-------------------------------------------
+        
         public ICommand ChangePage { get; }
 
         private bool CanChangePageExecuted(object p) => p is FoodType;
@@ -69,15 +70,22 @@ namespace KFCMenu.ViewModel
 
         private bool CanAddDishToCartExecuted(object p) => true;
         private void OnAddDishToCartExecute(object p) => FoodInCartCount = FoodInCartCount + 1;
+
+
+        public ICommand NavigateToCartViewModel { get; }
+
         #endregion
 
 
-        public MenuPageViewModel()
+        public MenuPageViewModel(NavigationStore navigationStore)
         {
             #region InitCommands
             ChangePage = new LambdaCommand(OnChangePageExecute, CanChangePageExecuted);
             AddDishToCart = new LambdaCommand(OnAddDishToCartExecute, CanAddDishToCartExecuted);
+            NavigateToCartViewModel = new NavigationCommand<CartViewModel>(navigationStore, () => new CartViewModel(navigationStore));
             #endregion
+
+
             FoodTypes = new List<FoodType>(4);
             _Initialize();
         }

@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.IO;
 using System.Windows.Input;
 using KFCMenu.Infrastructure.Commands;
+using KFCMenu.Stores;
 
 
 
@@ -25,22 +26,25 @@ namespace KFCMenu.ViewModel
         #endregion
 
         #region ----------------------------------Current VIew Model----------------------------------
-        private ViewModelBase _CurrentViewModel;
+        private NavigationStore _navigationStore;
         public ViewModelBase CurrentViewModel { 
-            get => _CurrentViewModel;
-            set => Set(ref _CurrentViewModel, value);}
+            get => _navigationStore.CurrentViewModel;}
 
 
         #endregion
 
 
-        public MainViewModel()
+        public MainViewModel(NavigationStore navigationStore)
         {
-            _Initialize();
+            _navigationStore = navigationStore;
+
+            _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
         }
-        private async void _Initialize()
+        
+
+        private void OnCurrentViewModelChanged()
         {
-            CurrentViewModel = new MenuPageViewModel();
+            OnPropertyChanged(nameof(CurrentViewModel));
         }
     }
 } 
