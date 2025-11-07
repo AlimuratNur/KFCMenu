@@ -17,7 +17,7 @@ namespace KFCMenu
         { 
             base.OnStartup(e);
             var navigationStore = new NavigationStore();
-            navigationStore.CurrentViewModel = new MenuPageViewModel(navigationStore);
+            navigationStore.CurrentViewModel = new MenuPageViewModel(navigationStore, null);
             MainWindow = new MainWindow()
             {
                 DataContext = new MainViewModel(navigationStore)

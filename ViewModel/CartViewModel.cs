@@ -14,11 +14,12 @@ namespace KFCMenu.ViewModel
 
         public ICommand OnMenuPage { get; }
 
-        public CartViewModel(NavigationStore navigationStore)
+        public CartViewModel(NavigationStore navigationStore, DishCart? cartItems)
         {
-            OnMenuPage = new NavigationCommand<MenuPageViewModel>(navigationStore, () => new MenuPageViewModel(navigationStore));
-
-            Dishes = new();
+            #region Commands
+            OnMenuPage = new NavigationCommand<MenuPageViewModel>(navigationStore, () => new MenuPageViewModel(navigationStore, Dishes));
+            #endregion
+            Dishes = cartItems ?? new DishCart();
 
         }
     }

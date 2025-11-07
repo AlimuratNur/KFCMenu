@@ -58,7 +58,7 @@ namespace KFCMenu.ViewModel
 
         #region -------------------------------------------Commands-------------------------------------------
         
-        public ICommand ChangePage { get; }
+        public ICommand ChangePage { get; private set; }
 
         private bool CanChangePageExecuted(object p) => p is FoodType;
         private void OnChangePageExecute(object p)
@@ -67,7 +67,7 @@ namespace KFCMenu.ViewModel
         }
 
 
-        public ICommand AddDishToCart { get; }
+        public ICommand AddDishToCart { get; private set; }
 
         private bool CanAddDishToCartExecuted(object p) => p is Dish;
         private void OnAddDishToCartExecute(object p) 
@@ -79,7 +79,7 @@ namespace KFCMenu.ViewModel
         }
 
 
-        public ICommand NavigateToCartViewModel { get; }
+        public ICommand NavigateToCartViewModel { get; private set; }
 
 
 
@@ -87,16 +87,16 @@ namespace KFCMenu.ViewModel
         #endregion
 
 
-        public MenuPageViewModel(NavigationStore navigationStore)
+        public MenuPageViewModel(NavigationStore navigationStore,DishCart? cartItems)
         {
+            CartItems = cartItems ?? new DishCart();
+            
+            
             #region InitCommands
             ChangePage = new LambdaCommand(OnChangePageExecute, CanChangePageExecuted);
             AddDishToCart = new LambdaCommand(OnAddDishToCartExecute, CanAddDishToCartExecuted);
-            NavigateToCartViewModel = new NavigationCommand<CartViewModel>(navigationStore, () => new CartViewModel(navigationStore));
+            NavigateToCartViewModel = new NavigationCommand<CartViewModel>(navigationStore, () => new CartViewModel(navigationStore, CartItems));
             #endregion
-
-
-            
             _Initialize();
         }
 
@@ -123,8 +123,7 @@ namespace KFCMenu.ViewModel
             Drinks = new FoodType() { Title = "Drinks", Diches = await Load(jsonReader, GetPath("Drinks.json")) };
             #endregion
 
-            CartItems = new DishCart();
-
+            
         }
 
 
