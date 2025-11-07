@@ -32,5 +32,7 @@ namespace KFCMenu.Models
             var cartItem= (CartItem) obj;
             return this.DishObject.Equals(cartItem.DishObject);
         }
+        public override string ToString() => DishObject.ToString() + ItemCount ;
+        
     }
 }
