@@ -52,13 +52,9 @@
 
         <ListBox Grid.Row="1" ItemsSource="{Binding Dishes.CartItems}">
 
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Title}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
+            <!--ListBox.ItemTemplate>
+                <DataTemplate />
+            </ListBox.ItemTemplate-->
 
         </ListBox>
 
