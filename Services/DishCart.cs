@@ -21,7 +21,11 @@ namespace KFCMenu.Services
 
         public void Add(CartItem cartItem, int count)
         {
-            if (CartItems.Contains(cartItem)) cartItem.ItemCount += count;
+            if (CartItems.Contains(cartItem))
+            {
+                cartItem.ItemCount += count;
+                return;
+            }
             CartItems.Add(cartItem);
         }
 
@@ -33,13 +37,13 @@ namespace KFCMenu.Services
             else cartItem.ItemCount -= removeCount;
         }
 
-        public int Count => CartItems.Count;
+        public int Count => CartItems.Sum(i => i.ItemCount);
 
-        public double TotalPrice    => CartItems.Sum(i => i.TotalPrice);
+        public double TotalPrice => CartItems.Sum(i => i.TotalPrice);
 
         public bool Any() => CartItems.Any();
 
         public IEnumerator GetEnumerator() => CartItems.GetEnumerator();
-        
+
     }
 }

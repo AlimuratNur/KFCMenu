@@ -51,7 +51,7 @@ namespace KFCMenu.ViewModel
 
 
         #region -------------------------------------------Food In Cart Count-------------------------------------------
-        private int _FoodInCartCount = 0;
+        private int _FoodInCartCount ;
         public int FoodInCartCount { get => _FoodInCartCount; set => Set(ref _FoodInCartCount, value); }
         #endregion
 
@@ -90,7 +90,7 @@ namespace KFCMenu.ViewModel
         public MenuPageViewModel(NavigationStore navigationStore,DishCart? cartItems)
         {
             CartItems = cartItems ?? new DishCart();
-            
+            FoodInCartCount = CartItems.Count;
             
             #region InitCommands
             ChangePage = new LambdaCommand(OnChangePageExecute, CanChangePageExecuted);
