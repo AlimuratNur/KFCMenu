@@ -14,6 +14,11 @@ namespace KFCMenu.Services
         public HashSet<CartItem> CartItems { get; } = new();
 
 
+        public DishCart()
+        {
+            CartItems = new HashSet<CartItem>();
+        }
+
         public void Add(CartItem cartItem, int count)
         {
             if (CartItems.Contains(cartItem)) cartItem.ItemCount += count;
