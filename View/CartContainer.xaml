@@ -50,13 +50,34 @@
             FontSize="25"
             Text="Cart" />
 
-        <ListBox Grid.Row="1" ItemsSource="{Binding Dishes.CartItems}">
+        <ListView Grid.Row="1" ItemsSource="{Binding Dishes.CartItems}">
 
-            <!--ListBox.ItemTemplate>
-                <DataTemplate />
-            </ListBox.ItemTemplate-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Width="200"
+                        MaxHeight="300"
+                        Margin="6"
+                        Padding="8"
+                        Background="White"
+                        BorderBrush="LightGray"
+                        BorderThickness="1"
+                        CornerRadius="10">
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                FontFamily="{StaticResource KFC Font}"
+                                FontWeight="Bold"
+                                Text="{Binding Key}" />
 
-        </ListBox>
+
+
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
 
 
     </Grid>

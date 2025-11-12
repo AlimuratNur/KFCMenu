@@ -4,42 +4,43 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KFCMenu.Services
 {
     public record DishCart : IEnumerable
     {
-        public HashSet<CartItem> CartItems { get; } = new();
+        public Dictionary<CartItem, int> CartItems { get; }
 
 
         public DishCart()
         {
-            CartItems = new HashSet<CartItem>();
+            CartItems = new();
         }
 
         public void Add(CartItem cartItem, int count)
         {
-            if (CartItems.Contains(cartItem))
+            if (CartItems.ContainsKey(cartItem))
             {
-                cartItem.ItemCount += count;
+                int objectCount = CartItems[cartItem] + count;
+                CartItems.Remove(cartItem);
+                cartItem.ItemCount = objectCount;
+                CartItems[cartItem] = objectCount;
                 return;
             }
-            CartItems.Add(cartItem);
+            CartItems.Add(cartItem, 1);
         }
 
         public void Remove(CartItem cartItem, int removeCount)
         {
-            if (!CartItems.Contains(cartItem)) return;
+            if (!CartItems.ContainsKey(cartItem)) return;
 
             if (removeCount >= cartItem.ItemCount) CartItems.Remove(cartItem);
             else cartItem.ItemCount -= removeCount;
         }
 
-        public int Count => CartItems.Sum(i => i.ItemCount);
+        public int Count => CartItems.Sum(i => i.Value);
 
-        public double TotalPrice => CartItems.Sum(i => i.TotalPrice);
+        public double TotalPrice => CartItems.Sum(i => i.Key.TotalPrice);
 
         public bool Any() => CartItems.Any();
 

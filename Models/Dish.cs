@@ -31,7 +31,7 @@ namespace KFCMenu.Models
         }
 
         public override int GetHashCode() => 
-            Title.GetHashCode() + Description.GetHashCode() + Price;
+            Title.GetHashCode() + Description.GetHashCode() * Price;
         
 
         public override string ToString()

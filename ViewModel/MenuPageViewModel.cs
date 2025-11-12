@@ -17,7 +17,8 @@ namespace KFCMenu.ViewModel
 {
     public class MenuPageViewModel : ViewModelBase
     {   
-        public DishCart CartItems;
+        private DishCart _cartItems;
+        public DishCart CartItems { get => _cartItems; set => Set(ref _cartItems, value); }
 
 
         #region -------------------------------------------SelectedFoodType-------------------------------------------
@@ -58,7 +59,7 @@ namespace KFCMenu.ViewModel
 
         #region -------------------------------------------Commands-------------------------------------------
         
-        public ICommand ChangePage { get; private set; }
+        public ICommand ChangePage { get;  }
 
         private bool CanChangePageExecuted(object p) => p is FoodType;
         private void OnChangePageExecute(object p)
@@ -67,19 +68,19 @@ namespace KFCMenu.ViewModel
         }
 
 
-        public ICommand AddDishToCart { get; private set; }
+        public ICommand AddDishToCart { get;  }
 
         private bool CanAddDishToCartExecuted(object p) => p is Dish;
         private void OnAddDishToCartExecute(object p) 
         {
             var dish = (Dish)p;
-            var cartItem = new CartItem(1,dish);
+            var cartItem = new CartItem(0,dish);
             CartItems.Add(cartItem,1);
             FoodInCartCount = FoodInCartCount + 1; 
         }
 
 
-        public ICommand NavigateToCartViewModel { get; private set; }
+        public ICommand NavigateToCartViewModel { get; }
 
 
 
