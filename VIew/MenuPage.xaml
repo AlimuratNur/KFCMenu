@@ -22,17 +22,25 @@
 
 
         <Style x:Key="FoodTypeButton" TargetType="Button">
-            <Setter Property="Height" Value="30" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="Background" Value="AliceBlue" />
-            <Setter Property="BorderBrush" Value="LightGray" />
-            <Setter Property="FontFamily" Value="{StaticResource KFC Font}" />
-            <Setter Property="Command" Value="{Binding ChangePage}" />
+            <Style.Setters>
+                <Setter Property="Height" Value="30" />
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="Background" Value="AliceBlue" />
+                <Setter Property="BorderBrush" Value="LightGray" />
+                <Setter Property="FontFamily" Value="{StaticResource KFC Font}" />
+                <Setter Property="Command" Value="{Binding ChangePage}" />
+            </Style.Setters>
             <Style.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10" />
                 </Style>
             </Style.Resources>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+
+                    <Setter Property="Background" Value="White" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
 
@@ -147,7 +155,6 @@
                         Width="200"
                         MaxWidth="200"
                         MaxHeight="200"
-                        
                         Margin="6"
                         Padding="8"
                         Background="White"
@@ -183,7 +190,7 @@
                             </Button>
                         </StackPanel>
                     </Border>
-                    
+
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
