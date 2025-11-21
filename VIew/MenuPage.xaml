@@ -11,42 +11,54 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
 
+
+
     <UserControl.Resources>
-        <Style TargetType="DataGridCell">
-            <Setter Property="HorizontalContentAlignment" Value="Center" />
-            <Setter Property="VerticalContentAlignment" Value="Center" />
 
-            <Setter Property="Background" Value="AliceBlue" />
+        <ResourceDictionary>
 
-        </Style>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Resources/Styles/ChangePageButton.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="DataGridCell">
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
 
-
-        <Style x:Key="FoodTypeButton" TargetType="Button">
-            <Style.Setters>
-                <Setter Property="Height" Value="30" />
-                <Setter Property="Margin" Value="10" />
                 <Setter Property="Background" Value="AliceBlue" />
-                <Setter Property="BorderBrush" Value="LightGray" />
-                <Setter Property="FontFamily" Value="{StaticResource KFC Font}" />
-                <Setter Property="Command" Value="{Binding ChangePage}" />
-            </Style.Setters>
-            <Style.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10" />
-                </Style>
-            </Style.Resources>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
 
-                    <Setter Property="Background" Value="White" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+            </Style>
 
 
-        <Style x:Key="AddToCartButton" TargetType="Button">
-            <Setter Property="Command" Value="{Binding AddDishToCart}" />
-        </Style>
+            <Style x:Key="FoodTypeButton" TargetType="Button">
+                <Style.Setters>
+                    <Setter Property="Height" Value="30" />
+                    <Setter Property="Margin" Value="10" />
+                    <Setter Property="Background" Value="AliceBlue" />
+                    <Setter Property="BorderBrush" Value="LightGray" />
+                    <Setter Property="FontFamily" Value="{StaticResource KFC Font}" />
+
+                </Style.Setters>
+                <Style.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10" />
+                    </Style>
+                </Style.Resources>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+
+                        <Setter Property="Background" Value="White" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+
+            <Style x:Key="AddToCartButton" TargetType="Button">
+                <Setter Property="Command" Value="{Binding AddDishToCart}" />
+            </Style>
+
+        </ResourceDictionary>
+
+
     </UserControl.Resources>
 
 
@@ -111,22 +123,26 @@
 
             <Button
                 Name="Combos"
+                Command="{Binding ChangePage}"
                 CommandParameter="{Binding Combos}"
                 Content="{Binding Combos.Title}"
-                Style="{StaticResource FoodTypeButton}" />
+                Style="{StaticResource ButtonStyle1}" />
             <Button
                 Name="Burgers"
+                Command="{Binding ChangePage}"
                 CommandParameter="{Binding Burgers}"
                 Content="{Binding Burgers.Title}"
                 Style="{StaticResource FoodTypeButton}" />
             <Button
                 Name="Chickens"
+                Command="{Binding ChangePage}"
                 CommandParameter="{Binding Chickens}"
                 Content="{Binding Chickens.Title}"
                 Style="{StaticResource FoodTypeButton}" />
 
             <Button
                 Name="Drinks"
+                Command="{Binding ChangePage}"
                 CommandParameter="{Binding Drinks}"
                 Content="{Binding Drinks.Title}"
                 Style="{StaticResource FoodTypeButton}" />
