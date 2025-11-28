@@ -148,7 +148,7 @@
             ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid HorizontalAlignment="Stretch" Columns="3" />
+                    <UniformGrid HorizontalAlignment="Stretch"  />
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
 
