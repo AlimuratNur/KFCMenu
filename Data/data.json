@@ -1,22 +1,22 @@
 [
   {
-    "Title": "Mega Combo",
-    "Description": "Combo with 1L pepsi, 25 chicken legs, 30 chiken strips and a mega big french fries box with 5 type of souce",
+    "Title": "Мега Комбо",
+    "Description": "Комбо с 1 л Pepsi, 25 куриными ножками, 30 куриными стрипсами и мега-большой порцией картофеля фри с 5 видами соуса.",
     "Price": 25000
   },
   {
-    "Title": "Ultra Combo",
-    "Description": "Combo with 1L pepsi, 20 chicken legs, 25 chiken strips and a ultra big french fries box with 5 type of souce",
+    "Title": "Ультра Комбо",
+    "Description": "Комбо с 1 л Pepsi, 20 куриными ножками, 25 куриными стрипсами и ультра-большой порцией картофеля фри с 5 видами соуса.",
     "Price": 20000
   },
   {
-    "Title": "High Combo",
-    "Description": "Combo with 1L pepsi, 15 chicken legs, 20 chiken strips and a big french fries box with 3 type of souce",
+    "Title": "Большое",
+    "Description": "Комбо с 1 л Pepsi, 15 куриными ножками, 20 куриными стрипсами и большой порцией картофеля фри с 3 видами соуса.",
     "Price": 15000
   },
   {
-    "Title": "AVG Combo",
-    "Description": "Combo with 0,5L pepsi, 10 chicken legs, 13 chiken strips and a french fries box with 1 souce",
+    "Title": "Средное Комбо",
+    "Description": "Комбо с 0,5 л Pepsi, 10 куриными ножками, 13 куриными стрипсами и порцией картофеля фри с 1 соусом.",
     "Price": 8500
   }
 ]  
