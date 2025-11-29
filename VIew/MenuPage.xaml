@@ -14,43 +14,13 @@
 
 
     <UserControl.Resources>
-
         <ResourceDictionary>
-
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/Styles/ChangePageButton.xaml" />
                 <ResourceDictionary Source="../Resources/Styles/KfcButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <Style TargetType="DataGridCell">
-                <Setter Property="HorizontalContentAlignment" Value="Center" />
-                <Setter Property="VerticalContentAlignment" Value="Center" />
-
-                <Setter Property="Background" Value="AliceBlue" />
-
-            </Style>
-
-
-
-
-
-            <Style x:Key="kfcButton1" TargetType="Button">
-                <Setter Property="Background" Value="White" />
-                <Style.Triggers>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="DarkRed" />
-                        <Setter Property="BorderBrush" Value="Red" />
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-
         </ResourceDictionary>
-
-
     </UserControl.Resources>
-
-
-
-
 
 
     <Grid Background="White">
@@ -70,8 +40,6 @@
             FontFamily="{StaticResource KFC Font}"
             FontSize="20"
             Style="{StaticResource KfcButton}" />
-
-
 
         <StackPanel Grid.Row="1" Grid.Column="0">
             <Button
@@ -120,13 +88,7 @@
         <ListView
             Grid.Row="1"
             Grid.Column="1"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Top"
-            HorizontalContentAlignment="Left"
-            BorderBrush="AliceBlue"
-            ItemsSource="{Binding SelectedFoodType.Diches}"
-            ScrollViewer.CanContentScroll="False"
-            ScrollViewer.VerticalScrollBarVisibility="Auto">
+            ItemsSource="{Binding SelectedFoodType.Diches}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid HorizontalAlignment="Stretch" />
