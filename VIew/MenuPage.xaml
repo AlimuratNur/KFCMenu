@@ -18,8 +18,8 @@
         <ResourceDictionary>
 
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../../Resources/Styles/ChangePageButton.xaml" />
-                <ResourceDictionary Source="../../Resources/Styles/KfcButton.xaml" />
+                <ResourceDictionary Source="../Resources/Styles/ChangePageButton.xaml" />
+                <ResourceDictionary Source="../Resources/Styles/KfcButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="DataGridCell">
                 <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -62,35 +62,18 @@
             <RowDefinition Height="100" />
             <RowDefinition />
         </Grid.RowDefinitions>
-
-
-
         <Button
             Grid.Row="0"
             Grid.Column="0"
             Margin="14,15"
-            Style="{StaticResource KfcButton}">
-
-            <TextBlock
-                Margin="10"
-                FontFamily="{StaticResource KFC Font}"
-                FontSize="20"
-                Text="KFC" />
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10" />
-                </Style>
-            </Button.Resources>
-        </Button>
-
-
-
-
+            Content="KFC"
+            FontFamily="{StaticResource KFC Font}"
+            FontSize="20"
+            Style="{StaticResource KfcButton}" />
 
 
 
         <StackPanel Grid.Row="1" Grid.Column="0">
-
             <Button
                 Name="Combos"
                 Command="{Binding ChangePage}"
@@ -109,7 +92,6 @@
                 CommandParameter="{Binding Chickens}"
                 Content="{Binding Chickens.Title}"
                 Style="{StaticResource ChangeFoodPage}" />
-
             <Button
                 Name="Drinks"
                 Command="{Binding ChangePage}"
@@ -135,7 +117,6 @@
 
         </Button>
 
-
         <ListView
             Grid.Row="1"
             Grid.Column="1"
@@ -148,7 +129,7 @@
             ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid HorizontalAlignment="Stretch"  />
+                    <UniformGrid HorizontalAlignment="Stretch" />
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
 
