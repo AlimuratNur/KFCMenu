@@ -18,7 +18,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/Styles/ChangePageButton.xaml" />
                 <ResourceDictionary Source="../Resources/Styles/KfcButton.xaml" />
+                <!--  ResourceDictionary Source="../Resources/DataTemplates/ListViewItemTemplate.xaml" /  -->
+                <ResourceDictionary Source="../Resources/DataTemplates/ListViewTemplate.xaml" />
+
             </ResourceDictionary.MergedDictionaries>
+
+
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -26,11 +31,11 @@
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120" />
-            <ColumnDefinition />
+            <ColumnDefinition Width="680" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
-            <RowDefinition />
+            <RowDefinition Height="500" />
         </Grid.RowDefinitions>
         <Button
             Grid.Row="0"
@@ -88,7 +93,8 @@
         <ListView
             Grid.Row="1"
             Grid.Column="1"
-            ItemsSource="{Binding SelectedFoodType.Diches}">
+            ItemsSource="{Binding SelectedFoodType.Diches}"
+            Style="{StaticResource FoodViewer}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid HorizontalAlignment="Stretch" />
@@ -119,21 +125,9 @@
                                 TextWrapping="Wrap" />
                             <TextBlock HorizontalAlignment="Center" Text="{Binding Price, StringFormat='₸{0}'}" />
                             <Button
-                                Margin="20,5"
-                                Padding="23,4"
-                                Background="AliceBlue"
-                                BorderBrush="DarkGray"
                                 Command="{Binding DataContext.AddDishToCart, RelativeSource={RelativeSource AncestorType=ListView}}"
                                 CommandParameter="{Binding}"
-                                Content="Добавить">
-
-                                <Button.Resources>
-                                    <Style TargetType="Border">
-                                        <Setter Property="CornerRadius" Value="10" />
-                                    </Style>
-                                </Button.Resources>
-
-                            </Button>
+                                Style="{StaticResource AddButton}" />
                         </StackPanel>
                     </Border>
 

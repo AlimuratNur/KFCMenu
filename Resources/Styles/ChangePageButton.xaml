@@ -3,7 +3,7 @@
 
 
 
-    
+
 
 
     <Style x:Key="FocusVisual">
@@ -41,6 +41,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="10"
                         SnapsToDevicePixels="true">
                         <ContentPresenter
                             x:Name="contentPresenter"
@@ -64,11 +65,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Style.Resources>
-            <Style TargetType="Border">
-                <Setter Property="CornerRadius" Value="10" />
-            </Style>
-        </Style.Resources>
+
     </Style>
 
 </ResourceDictionary>
