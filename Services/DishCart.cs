@@ -16,8 +16,6 @@ namespace KFCMenu.Services
 
         public void Add(CartItem cartItem, int count)
         {
-
-
             var item = CartItems.FirstOrDefault(items => items.Equals(cartItem));
             if (item is null || !cartItem.Equals(item))
             {
@@ -50,7 +48,7 @@ namespace KFCMenu.Services
         public bool Contains(object p)
         {
             if(p is null) throw new ArgumentNullException(nameof(p));
-            if(!(p is Dish)) throw new ArgumentException(nameof(p));
+            if(!(p is CartItem)) throw new ArgumentException(nameof(p));
             return CartItems.Contains(p);
         }
 

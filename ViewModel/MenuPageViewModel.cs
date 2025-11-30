@@ -3,11 +3,7 @@ using KFCMenu.Models;
 using KFCMenu.Services;
 using KFCMenu.Stores;
 using KFCMenu.ViewModel.Base;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace KFCMenu.ViewModel

@@ -16,6 +16,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/DataTemplates/ListViewTemplate.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
             <Style TargetType="Button">
                 <Setter Property="Background" Value="White" />
 
@@ -27,6 +28,7 @@
                     </Style>
                 </Style.Resources>
             </Style>
+
         </ResourceDictionary>
 
     </UserControl.Resources>
@@ -61,17 +63,17 @@
             Width="700"
             Height="500"
             MinHeight="500"
-            AllowDrop="True"
             HorizontalAlignment="Center"
+            AllowDrop="True"
             ItemsSource="{Binding Dishes.CartItems}"
             Style="{StaticResource FoodViewer}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel
                         Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ListView}}"
+                        HorizontalAlignment="Center"
                         IsItemsHost="True"
-                        Orientation="Vertical" 
-                        HorizontalAlignment="Center"/>
+                        Orientation="Vertical" />
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
 
@@ -85,7 +87,10 @@
                             FontWeight="Bold"
                             Text="{Binding}" />
 
-
+                        <Button
+                            Command="{Binding  DataContext.OnRemoveItem, RelativeSource={RelativeSource AncestorType=ListView}}"
+                            CommandParameter="{Binding}"
+                            Content="Remove" />
 
                     </StackPanel>
 

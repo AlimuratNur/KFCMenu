@@ -89,10 +89,10 @@
             Style="{StaticResource FoodViewer}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid HorizontalAlignment="Stretch"/>
+                    <UniformGrid HorizontalAlignment="Stretch" />
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
-            
+
             <ListView.ItemTemplate>
                 <DataTemplate>
 

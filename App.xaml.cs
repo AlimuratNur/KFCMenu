@@ -22,6 +22,7 @@ namespace KFCMenu
             {
                 DataContext = new MainViewModel(navigationStore)
             };
+
             MainWindow.Show();
             
 
