@@ -1,15 +1,12 @@
 ﻿using KFCMenu.Models;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Emit;
 
 namespace KFCMenu.Services
 {
     public record DishCart : IEnumerable
     {
-        public Dictionary<CartItem, int> CartItems { get; }
+        public List<CartItem> CartItems { get; }
 
 
         public DishCart()
@@ -19,28 +16,35 @@ namespace KFCMenu.Services
 
         public void Add(CartItem cartItem, int count)
         {
-            if (CartItems.ContainsKey(cartItem))
+
+
+            var item = CartItems.FirstOrDefault(items => items.Equals(cartItem));
+            if (item is null || !cartItem.Equals(item))
             {
-                int objectCount = CartItems[cartItem] + count;
-                CartItems.Remove(cartItem);
-                cartItem.ItemCount = objectCount;
-                CartItems[cartItem] = objectCount;
+                CartItems.Add(cartItem);
                 return;
             }
-            CartItems.Add(cartItem, 1);
+            item.ItemCount += count;
         }
 
-        public void Remove(CartItem cartItem, int removeCount)
+        public void Remove(CartItem cartItem, int removeCount)  
         {
-            if (!CartItems.ContainsKey(cartItem)) return;
+            var removeItem = CartItems.FirstOrDefault(item => cartItem.Equals(item));
+            if (removeItem is null || !cartItem.Equals(removeItem))
+            {
 
-            if (removeCount >= cartItem.ItemCount) CartItems.Remove(cartItem);
-            else cartItem.ItemCount -= removeCount;
+                return;
+            }
+            if (removeItem.ItemCount > removeCount)
+                removeItem.ItemCount -= removeCount;
+            else
+                CartItems.Remove(removeItem);
+
         }
 
-        public int Count => CartItems.Sum(i => i.Value);
+        public int Count => CartItems.Sum(i => i.ItemCount);
 
-        public double TotalPrice => CartItems.Sum(i => i.Key.TotalPrice);
+        public double TotalPrice => CartItems.Sum(i => i.TotalPrice);
 
         public bool Any() => CartItems.Any();
 
