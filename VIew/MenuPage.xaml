@@ -18,7 +18,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/Styles/ChangePageButton.xaml" />
                 <ResourceDictionary Source="../Resources/Styles/KfcButton.xaml" />
-                <!--  ResourceDictionary Source="../Resources/DataTemplates/ListViewItemTemplate.xaml" /  -->
+
                 <ResourceDictionary Source="../Resources/DataTemplates/ListViewTemplate.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
@@ -86,6 +86,7 @@
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10" />
                 </Style>
+
             </Button.Resources>
 
         </Button>
@@ -95,12 +96,6 @@
             Grid.Column="1"
             ItemsSource="{Binding SelectedFoodType.Diches}"
             Style="{StaticResource FoodViewer}">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <UniformGrid HorizontalAlignment="Stretch" />
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border
@@ -127,12 +122,13 @@
                             <Button
                                 Command="{Binding DataContext.AddDishToCart, RelativeSource={RelativeSource AncestorType=ListView}}"
                                 CommandParameter="{Binding}"
-                                Style="{StaticResource AddButton}" />
+                                Style="{DynamicResource AddButton1}" />
                         </StackPanel>
                     </Border>
-
                 </DataTemplate>
             </ListView.ItemTemplate>
+
+
         </ListView>
 
 
