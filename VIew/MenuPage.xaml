@@ -36,9 +36,7 @@
         <Button
             Grid.Row="0"
             Grid.Column="0"
-            
             FontFamily="{StaticResource KFC Font}"
-            
             Style="{StaticResource KfcButton}" />
 
         <StackPanel Grid.Row="1" Grid.Column="0">
@@ -123,7 +121,6 @@
             Margin="5,17,550,17"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
-            FontFamily="{StaticResource KFC Font}"
             FontSize="23"
             Text="{Binding FoodInCartCount}" />
     </Grid>
