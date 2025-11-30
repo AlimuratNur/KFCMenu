@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace KFCMenu.Services
 {
-    public record DishCart : IEnumerable
+    public record DishCart :  IList<CartItem>
     {
         public List<CartItem> CartItems { get; }
 
@@ -14,6 +14,13 @@ namespace KFCMenu.Services
             CartItems = new();
         }
 
+
+        #region ---------------------------------------------------ADD---------------------------------------------------
+        public void Add(CartItem item)
+        {
+            if(item is null) throw new ArgumentNullException("item");
+            Add(item, 1);
+        }
         public void Add(CartItem cartItem, int count)
         {
             var item = CartItems.FirstOrDefault(items => items.Equals(cartItem));
@@ -24,8 +31,23 @@ namespace KFCMenu.Services
             }
             item.ItemCount += count;
         }
+        #endregion
 
-        public void Remove(CartItem cartItem, int removeCount)  
+
+        #region ---------------------------------------------------Insert---------------------------------------------------
+        
+        public void Insert(int index, CartItem item)
+        {
+            if (index >= CartItems.Count) throw new ArgumentOutOfRangeException("index is more than cart items count");
+            if (item is null) throw new ArgumentNullException("item");
+            CartItems.Insert(index, item);
+        }
+
+        #endregion
+
+
+        #region ---------------------------------------------------Remove---------------------------------------------------
+        public void RemoveWithCount(CartItem cartItem, int removeCount)  
         {
             var removeItem = CartItems.FirstOrDefault(item => cartItem.Equals(item));
             if (removeItem is null || !cartItem.Equals(removeItem))
@@ -36,7 +58,19 @@ namespace KFCMenu.Services
                 removeItem.ItemCount -= removeCount;
             else
                 CartItems.Remove(removeItem);
+        }
 
+        public bool Remove(CartItem item) => CartItems.Remove(item);
+        public void RemoveAt(int index) => CartItems.RemoveAt(index);
+        
+        #endregion
+
+        public void CopyTo(CartItem[] cartItems, int index)
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                cartItems.SetValue(CartItems[i], index++);
+            }
         }
 
         public int Count => CartItems.Sum(i => i.ItemCount);
@@ -45,14 +79,34 @@ namespace KFCMenu.Services
 
         public bool Any() => CartItems.Any();
 
-        public bool Contains(object p)
+        public bool Contains(CartItem p)
         {
             if(p is null) throw new ArgumentNullException(nameof(p));
-            if(!(p is CartItem)) throw new ArgumentException(nameof(p));
             return CartItems.Contains(p);
         }
 
-        public IEnumerator GetEnumerator() => CartItems.GetEnumerator();
+        public void Clear() => CartItems.Clear();
+
+        public int IndexOf(CartItem item) => CartItems.IndexOf(item); 
+
+
+        public CartItem this[int index]
+        {
+            get => CartItems[index];
+            set => CartItems[index] = value;
+        }
+
+        public IEnumerator<CartItem> GetEnumerator() => CartItems.GetEnumerator();
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public bool IsReadOnly
+        {
+            get => false;
+        }
 
     }
 }

@@ -28,7 +28,7 @@ namespace KFCMenu.ViewModel
         private void OnRemoveItemExecute(object p) 
         {
             var d = (CartItem)p;
-            Dishes.Remove(d, 1);
+            Dishes.RemoveWithCount(d, 1);
         }
 
         #endregion
