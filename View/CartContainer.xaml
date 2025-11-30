@@ -12,17 +12,23 @@
 
 
     <UserControl.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Background" Value="White" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/DataTemplates/ListViewTemplate.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Button">
+                <Setter Property="Background" Value="White" />
 
 
-            <Style.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10" />
-                    <Setter Property="BorderBrush" Value="White" />
-                </Style>
-            </Style.Resources>
-        </Style>
+                <Style.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10" />
+                        <Setter Property="BorderBrush" Value="White" />
+                    </Style>
+                </Style.Resources>
+            </Style>
+        </ResourceDictionary>
+
     </UserControl.Resources>
 
     <Grid Background="White">
@@ -50,30 +56,40 @@
             FontSize="25"
             Text="Cart" />
 
-        <ListView Grid.Row="1" ItemsSource="{Binding Dishes.CartItems}">
+        <ListView
+            Grid.Row="1"
+            Width="700"
+            Height="500"
+            MinHeight="500"
+            AllowDrop="True"
+            HorizontalAlignment="Center"
+            ItemsSource="{Binding Dishes.CartItems}"
+            Style="{StaticResource FoodViewer}">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel
+                        Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ListView}}"
+                        IsItemsHost="True"
+                        Orientation="Vertical" 
+                        HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border
-                        Width="200"
-                        MaxHeight="300"
-                        Margin="6"
-                        Padding="8"
-                        Background="White"
-                        BorderBrush="LightGray"
-                        BorderThickness="1"
-                        CornerRadius="10">
-                        <StackPanel VerticalAlignment="Center">
-                            <TextBlock
-                                HorizontalAlignment="Center"
-                                FontFamily="{StaticResource KFC Font}"
-                                FontWeight="Bold"
-                                Text="{Binding Key}" />
+
+                    <StackPanel>
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            FontFamily="{StaticResource KFC Font}"
+                            FontWeight="Bold"
+                            Text="{Binding}" />
 
 
 
-                        </StackPanel>
-                    </Border>
+                    </StackPanel>
+
+
                 </DataTemplate>
             </ListView.ItemTemplate>
 

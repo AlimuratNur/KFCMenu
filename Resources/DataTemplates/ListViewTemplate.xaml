@@ -71,12 +71,12 @@
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Top" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        
+        <Setter Property="MaxHeight" Value="700" />
         <Setter Property="Width" Value="680" />
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
@@ -88,7 +88,7 @@
                                 <Border
                                     x:Name="Bd"
                                     Width="200"
-                                    Margin="6"
+                                    Margin="5"
                                     Padding="8"
                                     Background="{TemplateBinding Background}"
                                     BorderBrush="LightGray"
@@ -102,9 +102,7 @@
                     </Setter>
 
                     <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="White                                     " />
-                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True" />
 
                     </Style.Triggers>
                 </Style>
@@ -129,30 +127,7 @@
             </Setter.Value>
 
         </Setter>
-        <Setter Property="ItemsPanel">
-            <Setter.Value>
-                <ItemsPanelTemplate>
-                    <UniformGrid HorizontalAlignment="Stretch">
-                        <UniformGrid.Style>
-                            <Style TargetType="{x:Type UniformGrid}">
-
-
-                                <Style.Triggers>
-
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="White" />
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </UniformGrid.Style>
-                    </UniformGrid>
-
-                </ItemsPanelTemplate>
-
-            </Setter.Value>
-        </Setter>
-
-
+        
     </Style>
 
 

@@ -2,10 +2,7 @@
 using KFCMenu.Models;
 using KFCMenu.Services;
 using KFCMenu.Stores;
-using KFCMenu.View;
 using KFCMenu.ViewModel.Base;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -74,7 +71,7 @@ namespace KFCMenu.ViewModel
         private void OnAddDishToCartExecute(object p) 
         {
             var dish = (Dish)p;
-            var cartItem = new CartItem(0,dish);
+            var cartItem = new CartItem(1,dish);
             CartItems.Add(cartItem,1);
             FoodInCartCount = FoodInCartCount + 1; 
         }
