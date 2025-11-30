@@ -32,7 +32,6 @@ namespace KFCMenu.Services
             var removeItem = CartItems.FirstOrDefault(item => cartItem.Equals(item));
             if (removeItem is null || !cartItem.Equals(removeItem))
             {
-
                 return;
             }
             if (removeItem.ItemCount > removeCount)
@@ -47,6 +46,13 @@ namespace KFCMenu.Services
         public double TotalPrice => CartItems.Sum(i => i.TotalPrice);
 
         public bool Any() => CartItems.Any();
+
+        public bool Contains(object p)
+        {
+            if(p is null) throw new ArgumentNullException(nameof(p));
+            if(!(p is Dish)) throw new ArgumentException(nameof(p));
+            return CartItems.Contains(p);
+        }
 
         public IEnumerator GetEnumerator() => CartItems.GetEnumerator();
 
