@@ -76,6 +76,8 @@
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
+        
+        <Setter Property="Width" Value="680" />
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type ListViewItem}">
@@ -85,8 +87,13 @@
                             <ControlTemplate TargetType="{x:Type ListViewItem}">
                                 <Border
                                     x:Name="Bd"
-                                    Padding="{TemplateBinding Padding}"
+                                    Width="200"
+                                    Margin="6"
+                                    Padding="8"
                                     Background="{TemplateBinding Background}"
+                                    BorderBrush="LightGray"
+                                    BorderThickness="1"
+                                    CornerRadius="10"
                                     SnapsToDevicePixels="true">
                                     <ContentPresenter />
                                 </Border>
@@ -128,7 +135,7 @@
                     <UniformGrid HorizontalAlignment="Stretch">
                         <UniformGrid.Style>
                             <Style TargetType="{x:Type UniformGrid}">
-                                <Setter Property="Columns" Value="2" />
+
 
                                 <Style.Triggers>
 

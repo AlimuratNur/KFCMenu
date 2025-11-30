@@ -18,12 +18,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/Styles/ChangePageButton.xaml" />
                 <ResourceDictionary Source="../Resources/Styles/KfcButton.xaml" />
-
                 <ResourceDictionary Source="../Resources/DataTemplates/ListViewTemplate.xaml" />
-
             </ResourceDictionary.MergedDictionaries>
-
-
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -40,10 +36,9 @@
         <Button
             Grid.Row="0"
             Grid.Column="0"
-            Margin="14,15"
-            Content="KFC"
+            
             FontFamily="{StaticResource KFC Font}"
-            FontSize="20"
+            
             Style="{StaticResource KfcButton}" />
 
         <StackPanel Grid.Row="1" Grid.Column="0">
@@ -98,33 +93,24 @@
             Style="{StaticResource FoodViewer}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border
-                        Width="200"
-                        MaxWidth="200"
-                        MaxHeight="200"
-                        Margin="6"
-                        Padding="8"
-                        Background="White"
-                        BorderBrush="LightGray"
-                        BorderThickness="1"
-                        CornerRadius="10">
-                        <StackPanel VerticalAlignment="Center">
-                            <TextBlock
-                                HorizontalAlignment="Center"
-                                FontFamily="{StaticResource KFC Font}"
-                                FontWeight="Bold"
-                                Text="{Binding Title}" />
-                            <TextBlock
-                                FontFamily="{StaticResource KFC Font}"
-                                Text="{Binding Description}"
-                                TextWrapping="Wrap" />
-                            <TextBlock HorizontalAlignment="Center" Text="{Binding Price, StringFormat='₸{0}'}" />
-                            <Button
-                                Command="{Binding DataContext.AddDishToCart, RelativeSource={RelativeSource AncestorType=ListView}}"
-                                CommandParameter="{Binding}"
-                                Style="{DynamicResource AddButton1}" />
-                        </StackPanel>
-                    </Border>
+
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            FontFamily="{StaticResource KFC Font}"
+                            FontWeight="Bold"
+                            Text="{Binding Title}" />
+                        <TextBlock
+                            FontFamily="{StaticResource KFC Font}"
+                            Text="{Binding Description}"
+                            TextWrapping="Wrap" />
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding Price, StringFormat='₸{0}'}" />
+                        <Button
+                            Command="{Binding DataContext.AddDishToCart, RelativeSource={RelativeSource AncestorType=ListView}}"
+                            CommandParameter="{Binding}"
+                            Style="{DynamicResource AddButton1}" />
+                    </StackPanel>
+
                 </DataTemplate>
             </ListView.ItemTemplate>
 
