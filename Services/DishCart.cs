@@ -1,11 +1,12 @@
 ﻿using KFCMenu.Models;
-using System.Collections;
-using System.Linq;
+using System.Collections.Specialized;
 
 namespace KFCMenu.Services
 {
-    public record DishCart :  IList<CartItem>
+    public record DishCart :  IList<CartItem>, INotifyCollectionChanged
     {
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
+
         public List<CartItem> CartItems { get; }
 
 
@@ -19,16 +20,20 @@ namespace KFCMenu.Services
         public void Add(CartItem item)
         {
             if(item is null) throw new ArgumentNullException("item");
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, item));
             Add(item, 1);
         }
         public void Add(CartItem cartItem, int count)
         {
             var item = CartItems.FirstOrDefault(items => items.Equals(cartItem));
+            
             if (item is null || !cartItem.Equals(item))
             {
+               OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, cartItem));
                 CartItems.Add(cartItem);
                 return;
             }
+            
             item.ItemCount += count;
         }
         #endregion
@@ -38,8 +43,12 @@ namespace KFCMenu.Services
         
         public void Insert(int index, CartItem item)
         {
-            if (index >= CartItems.Count) throw new ArgumentOutOfRangeException("index is more than cart items count");
-            if (item is null) throw new ArgumentNullException("item");
+            if (index >= CartItems.Count || index < 0) 
+                throw new ArgumentOutOfRangeException("index out of range");
+            
+            if (item is null) 
+                throw new ArgumentNullException("item");
+
             CartItems.Insert(index, item);
         }
 
@@ -51,25 +60,34 @@ namespace KFCMenu.Services
         {
             var removeItem = CartItems.FirstOrDefault(item => cartItem.Equals(item));
             if (removeItem is null || !cartItem.Equals(removeItem))
-            {
                 return;
-            }
+
+            var index = CartItems.IndexOf(removeItem);
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, removeItem,index));
+
             if (removeItem.ItemCount > removeCount)
                 removeItem.ItemCount -= removeCount;
-            else
+            else  
                 CartItems.Remove(removeItem);
+                
         }
 
-        public bool Remove(CartItem item) => CartItems.Remove(item);
+        public bool Remove(CartItem item) 
+        {
+            var index = CartItems.IndexOf(item);
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, item, index));
+            return CartItems.Remove(item); 
+        }
+
         public void RemoveAt(int index) => CartItems.RemoveAt(index);
         
         #endregion
 
-        public void CopyTo(CartItem[] cartItems, int index)
+        public void CopyTo(CartItem[] array, int arrayIndex)
         {
             for (int i = 0; i < Count; i++)
             {
-                cartItems.SetValue(CartItems[i], index++);
+                array.SetValue(CartItems[i], arrayIndex++);
             }
         }
 
@@ -106,6 +124,16 @@ namespace KFCMenu.Services
         public bool IsReadOnly
         {
             get => false;
+        }
+
+        protected virtual void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
+        {
+            if (CollectionChanged != null)
+            {
+                
+                CollectionChanged(this, e);
+            }
+            
         }
 
     }

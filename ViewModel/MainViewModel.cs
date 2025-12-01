@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using KFCMenu.ViewModel.Base;
-using KFCMenu.Models;
-using KFCMenu.Services;
-using System.Windows.Data;
-using System.IO;
-using System.Windows.Input;
-using KFCMenu.Infrastructure.Commands;
+﻿using KFCMenu.ViewModel.Base;
 using KFCMenu.Stores;
 
 
@@ -26,7 +15,7 @@ namespace KFCMenu.ViewModel
         #endregion
 
         #region ----------------------------------Current VIew Model----------------------------------
-        private NavigationStore _navigationStore;
+        private NavigationStore _navigationStore { get; }
         public ViewModelBase CurrentViewModel { 
             get => _navigationStore.CurrentViewModel;}
 

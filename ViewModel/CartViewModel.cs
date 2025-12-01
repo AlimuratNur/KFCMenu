@@ -3,8 +3,6 @@ using KFCMenu.Models;
 using KFCMenu.Services;
 using KFCMenu.Stores;
 using KFCMenu.ViewModel.Base;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace KFCMenu.ViewModel
@@ -28,7 +26,7 @@ namespace KFCMenu.ViewModel
         private void OnRemoveItemExecute(object p) 
         {
             var d = (CartItem)p;
-            Dishes.RemoveWithCount(d, 1);
+            Dishes.Remove(d);
         }
 
         #endregion

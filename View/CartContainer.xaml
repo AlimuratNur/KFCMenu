@@ -65,7 +65,7 @@
             MinHeight="500"
             HorizontalAlignment="Center"
             AllowDrop="True"
-            ItemsSource="{Binding Dishes.CartItems}"
+            ItemsSource="{Binding Dishes}"
             Style="{StaticResource FoodViewer}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
