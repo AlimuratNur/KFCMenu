@@ -44,7 +44,7 @@ namespace KFCMenu.Services
         public void Insert(int index, CartItem item)
         {
             if (index >= CartItems.Count || index < 0) 
-                throw new ArgumentOutOfRangeException("index out of range");
+                throw new ArgumentOutOfRangeException(nameof(index), index,"index out of range");
             
             if (item is null) 
                 throw new ArgumentNullException("item");
@@ -56,30 +56,35 @@ namespace KFCMenu.Services
 
 
         #region ---------------------------------------------------Remove---------------------------------------------------
-        public void RemoveWithCount(CartItem cartItem, int removeCount)  
+        public void RemoveByCount(CartItem cartItem, int removeCount)  
         {
             var removeItem = CartItems.FirstOrDefault(item => cartItem.Equals(item));
             if (removeItem is null || !cartItem.Equals(removeItem))
                 return;
 
             var index = CartItems.IndexOf(removeItem);
-            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, removeItem,index));
+            
 
             if (removeItem.ItemCount > removeCount)
                 removeItem.ItemCount -= removeCount;
             else  
                 CartItems.Remove(removeItem);
-                
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, removeItem,index));
         }
 
         public bool Remove(CartItem item) 
         {
             var index = CartItems.IndexOf(item);
+            var succesfulRemove = CartItems.Remove(item);
             OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, item, index));
-            return CartItems.Remove(item); 
+            return succesfulRemove;
         }
 
-        public void RemoveAt(int index) => CartItems.RemoveAt(index);
+        public void RemoveAt(int index) 
+        {
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, CartItems[index], index));
+            CartItems.RemoveAt(index); 
+        }
         
         #endregion
 
@@ -105,8 +110,9 @@ namespace KFCMenu.Services
 
         public void Clear() => CartItems.Clear();
 
-        public int IndexOf(CartItem item) => CartItems.IndexOf(item); 
+        public int IndexOf(CartItem item) => CartItems.IndexOf(item);
 
+        public CartItem FirstOrDefault() => CartItems.FirstOrDefault();
 
         public CartItem this[int index]
         {

@@ -26,19 +26,19 @@ namespace KFCMenu.ViewModel
 
 
         #region -------------------------------------------SelectedPages-------------------------------------------
+        
+        private FoodType? _combos;
+        public FoodType Combos { get => _combos; set => Set(ref _combos, value); }
 
-        private FoodType _Combos;
-        public FoodType Combos { get => _Combos; set => Set(ref _Combos, value); }
+        private FoodType _burgers;
+        public FoodType Burgers { get => _burgers; set => Set(ref _burgers, value); }
 
-        private FoodType _Burgers;
-        public FoodType Burgers { get => _Burgers; set => Set(ref _Burgers, value); }
-
-        private FoodType _Chickens;
-        public FoodType Chickens { get => _Chickens; set => Set(ref _Chickens, value); }
+        private FoodType _chickens;
+        public FoodType Chickens { get => _chickens; set => Set(ref _chickens, value); }
 
 
-        private FoodType _Drinks;
-        public FoodType Drinks { get => _Drinks; set => Set(ref _Drinks, value); }
+        private FoodType _drinks;
+        public FoodType Drinks { get => _drinks; set => Set(ref _drinks, value); }
 
 
         #endregion
