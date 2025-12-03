@@ -1,13 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.Json;
-using KFCMenu.Models;
-using System.Runtime.InteropServices.Marshalling;
+﻿using System.Text.Json;
 using System.IO;
-using System.Windows.Markup;
-using System.Windows.Documents;
+
 
 namespace KFCMenu.Services
 {
