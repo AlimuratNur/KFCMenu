@@ -60,12 +60,13 @@
 
         <ListView
             Grid.Row="1"
-            Width="700"
-            Height="500"
-            MinHeight="500"
+            Width="250"
+            Height="400"
+            MaxHeight="400"
             HorizontalAlignment="Center"
             AllowDrop="True"
             ItemsSource="{Binding Dishes}"
+            ScrollViewer.VerticalScrollBarVisibility="Hidden"
             Style="{StaticResource FoodViewer}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -73,14 +74,15 @@
                         Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ListView}}"
                         HorizontalAlignment="Center"
                         IsItemsHost="True"
-                        Orientation="Vertical" />
+                        Orientation="Vertical"
+                        ScrollViewer.VerticalScrollBarVisibility="Hidden" />
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
 
             <ListView.ItemTemplate>
                 <DataTemplate>
 
-                    <StackPanel HorizontalAlignment="Center">
+                    <StackPanel MaxHeight="50" HorizontalAlignment="Center">
                         <TextBlock
                             HorizontalAlignment="Center"
                             FontFamily="{StaticResource KFC Font}"
