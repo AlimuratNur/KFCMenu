@@ -11,6 +11,7 @@
   <ItemGroup>
     <PackageReference Include="FontAwesome5.WPF" Version="1.0.5" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="WPF-UI" Version="4.1.0" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
@@ -49,5 +50,10 @@
 	  <None Update="Data\Drinks.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <Folder Include="Resources\FoodImages\" />
 	</ItemGroup>
 </Project>
