@@ -82,17 +82,25 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
 
-                    <StackPanel MaxHeight="50" HorizontalAlignment="Center">
+                    <StackPanel MaxHeight="100" HorizontalAlignment="Center">
                         <TextBlock
                             HorizontalAlignment="Center"
                             FontFamily="{StaticResource KFC Font}"
                             FontWeight="Bold"
-                            Text="{Binding}" />
+                            Text="{Binding }" />
 
+                        <Button
+                            x:Name="minus"
+                            Width="15"
+                            Content="-" />
+                        <Button
+                            x:Name="plus"
+                            Width="15"
+                            Content="+" />
                         <Button
                             Command="{Binding DataContext.OnRemoveItem, RelativeSource={RelativeSource AncestorType=ListView}}"
                             CommandParameter="{Binding}"
-                            Content="Remove" />
+                            Content="Убрать" />
 
                     </StackPanel>
 
