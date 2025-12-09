@@ -2,11 +2,11 @@
 
 public class CartItem 
 {
-    public int ItemCount { get; set; }
-    
     public Dish DishObject  { get; }
 
     public string PicturePath { get; set; }
+    
+    public int ItemCount { get; set; }
 
     public CartItem(int itemCount, Dish dish)
     {
@@ -17,6 +17,8 @@ public class CartItem
 
     public double TotalPrice => ItemCount * DishObject.Price;
 
+
+    #region base methods overridings (tostring, get hash code, equals)
     public override int GetHashCode() => DishObject.GetHashCode();
     
 
@@ -29,5 +31,5 @@ public class CartItem
         return this.DishObject.Equals(cartItem.DishObject);
     }
     public override string ToString() => string.Format($"{DishObject.Title}   {ItemCount}") ;
-    
+    #endregion
 }
