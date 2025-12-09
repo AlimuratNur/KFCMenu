@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace KFCMenu.Models
+namespace KFCMenu.Models;
+
+public class FoodType
 {
-    public class FoodType
-    {
-        public string? Title { get; set; }
+    public string? Title { get; set; }
 
-        public ICollection<Dish>? Diches { get; set; }
+    public ICollection<Dish>? Diches { get; set; }
 
 
-    }
 }

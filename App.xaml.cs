@@ -6,32 +6,30 @@ using System.Data;
 using System.Windows;
 
 
-namespace KFCMenu
+namespace KFCMenu;
+
+/// <summary>
+/// Interaction logic for App.xaml
+/// </summary>
+public partial class App : Application
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
-    {
-        protected override void OnStartup(StartupEventArgs e)
-        { 
-            base.OnStartup(e);
-            var navigationStore = new NavigationStore();
-            navigationStore.CurrentViewModel = new MenuPageViewModel(navigationStore, null);
-            MainWindow = new MainWindow()
-            {
-                DataContext = new MainViewModel(navigationStore)
-            };
-
-            MainWindow.Show();
-            
-
-        }
-
-        private void Application_Startup(object sender, StartupEventArgs e)
+    protected override void OnStartup(StartupEventArgs e)
+    { 
+        base.OnStartup(e);
+        var navigationStore = new NavigationStore();
+        navigationStore.CurrentViewModel = new MenuPageViewModel(navigationStore, null);
+        MainWindow = new MainWindow()
         {
+            DataContext = new MainViewModel(navigationStore)
+        };
 
-        }
+        MainWindow.Show();
+        
+
     }
 
+    private void Application_Startup(object sender, StartupEventArgs e)
+    {
+
+    }
 }
