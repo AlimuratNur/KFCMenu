@@ -6,6 +6,8 @@ public class CartItem
     
     public Dish DishObject  { get; }
 
+    public string PicturePath { get; set; }
+
     public CartItem(int itemCount, Dish dish)
     {
         ItemCount = itemCount;
