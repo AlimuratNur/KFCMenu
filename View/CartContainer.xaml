@@ -92,7 +92,7 @@
 
 
                         <StackPanel
-                            Margin="0,10,0,0"
+                            Margin="0, 10"
                             VerticalAlignment="Top"
                             Orientation="Horizontal">
                             <Button
@@ -100,11 +100,11 @@
                                 Width="15"
                                 Margin="50,0,0,0"
                                 Content="-" />
-                            <TextBlock Text="{Binding ItemCount}" />
+                            <TextBlock Margin="25,0,0,0" Text="{Binding ItemCount}" />
                             <Button
                                 x:Name="plus"
                                 Width="15"
-                                Margin="50,0"
+                                Margin="25, 0,0,0"
                                 Content="+" />
                         </StackPanel>
 

@@ -29,6 +29,16 @@ public class CartViewModel : ViewModelBase
         Dishes.Remove(d);
     }
 
+
+    public ICommand OnRemoveByOne { get; }
+
+    private bool CanRemoveByOneExecuted(object p) => p != null && p is CartItem;
+    
+    private void OnRemoveByOneExecute(object p)
+    {
+        Dishes.RemoveByCount((CartItem)p, 1);    
+    }
+
     #endregion
 
 
