@@ -1,12 +1,19 @@
-﻿namespace KFCMenu.Models;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
-public class CartItem 
+namespace KFCMenu.Models;
+
+public class CartItem : INotifyPropertyChanged
 {
+    public event PropertyChangedEventHandler PropertyChanged;
+    
+
     public Dish DishObject  { get; }
 
     public string PicturePath { get; set; }
-    
-    public int ItemCount { get; set; }
+
+    private int _itemCount;
+    public int ItemCount { get => _itemCount; set { _itemCount = value; OnPropertyChanged(); } }
 
     public CartItem(int itemCount, Dish dish)
     {
@@ -32,4 +39,12 @@ public class CartItem
     }
     public override string ToString() => string.Format($"{DishObject.Title}   {ItemCount}") ;
     #endregion
+
+    
+   
+
+    protected void OnPropertyChanged([CallerMemberName] string name = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+    }
 }
