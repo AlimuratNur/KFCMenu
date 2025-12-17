@@ -1,12 +1,13 @@
 ﻿using KFCMenu.Models;
 using System.Collections.Specialized;
+using System.ComponentModel;
 
 namespace KFCMenu.Services;
 
 public record DishCart :  IList<CartItem>, INotifyCollectionChanged
 {
     public event NotifyCollectionChangedEventHandler CollectionChanged;
-
+    
     public List<CartItem> CartItems { get; }
 
 
@@ -56,20 +57,28 @@ public record DishCart :  IList<CartItem>, INotifyCollectionChanged
 
 
     #region ---------------------------------------------------Remove---------------------------------------------------
-    public void RemoveByCount(CartItem cartItem, int removeCount)  
+    public void RemoveByCount(CartItem cartItem, int removeCount)
     {
         var removeItem = CartItems.FirstOrDefault(item => cartItem.Equals(item));
         if (removeItem is null || !cartItem.Equals(removeItem))
             return;
 
         var index = CartItems.IndexOf(removeItem);
-        
+
 
         if (removeItem.ItemCount > removeCount)
+        {
+
             removeItem.ItemCount -= removeCount;
-        else  
+            
+        }
+        else
+        {
             CartItems.Remove(removeItem);
-        OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, removeItem,index));
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, removeItem, index));
+        }
+
+       
     }
 
     public bool Remove(CartItem item) 
@@ -141,5 +150,7 @@ public record DishCart :  IList<CartItem>, INotifyCollectionChanged
         }
         
     }
+
+    
 
 }
