@@ -92,19 +92,21 @@
 
 
                         <StackPanel
-                            Margin="0, 10"
+                            Margin="0,10"
                             VerticalAlignment="Top"
                             Orientation="Horizontal">
                             <Button
                                 x:Name="minus"
                                 Width="15"
                                 Margin="50,0,0,0"
+                                Command="{Binding DataContext.OnRemoveByOne, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                CommandParameter="{Binding}"
                                 Content="-" />
                             <TextBlock Margin="25,0,0,0" Text="{Binding ItemCount}" />
                             <Button
                                 x:Name="plus"
                                 Width="15"
-                                Margin="25, 0,0,0"
+                                Margin="25,0,0,0"
                                 Content="+" />
                         </StackPanel>
 

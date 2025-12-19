@@ -46,7 +46,8 @@ public class CartViewModel : ViewModelBase
     {
         #region Commands
         OnMenuPage = new NavigationCommand<MenuPageViewModel>(navigationStore, () => new MenuPageViewModel(navigationStore, Dishes));
-        OnRemoveItem = new LambdaCommand(OnRemoveItemExecute, CanRemoveItemExecuted); 
+        OnRemoveItem = new LambdaCommand(OnRemoveItemExecute, CanRemoveItemExecuted);
+        OnRemoveByOne = new LambdaCommand(OnRemoveByOneExecute, CanRemoveByOneExecuted);
         #endregion
         Dishes = cartItems ?? new DishCart();
 
