@@ -30,7 +30,7 @@ public record DishCart :  IList<CartItem>, INotifyCollectionChanged
         
         if (item is null || !cartItem.Equals(item))
         {
-           OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, cartItem));
+           
             CartItems.Add(cartItem);
             return;
         }
