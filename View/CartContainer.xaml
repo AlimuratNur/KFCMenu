@@ -107,6 +107,8 @@
                                 x:Name="plus"
                                 Width="15"
                                 Margin="25,0,0,0"
+                                Command="{Binding DataContext.OnAddByOne, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                CommandParameter="{Binding}"
                                 Content="+" />
                         </StackPanel>
 

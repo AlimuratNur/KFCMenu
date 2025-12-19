@@ -9,7 +9,7 @@ namespace KFCMenu.ViewModel;
 
 public class CartViewModel : ViewModelBase
 {
-    public DishCart Dishes { get;  }
+    public DishCart Dishes { get; }
     #region ---------------------------------------------------Command---------------------------------------------------
     public ICommand OnMenuPage { get; }
 
@@ -23,7 +23,7 @@ public class CartViewModel : ViewModelBase
         var d = (CartItem)p;
         return Dishes.Contains(d);
     }
-    private void OnRemoveItemExecute(object p) 
+    private void OnRemoveItemExecute(object p)
     {
         var d = (CartItem)p;
         Dishes.Remove(d);
@@ -33,11 +33,17 @@ public class CartViewModel : ViewModelBase
     public ICommand OnRemoveByOne { get; }
 
     private bool CanRemoveByOneExecuted(object p) => p != null && p is CartItem;
-    
+
     private void OnRemoveByOneExecute(object p)
     {
-        Dishes.RemoveByCount((CartItem)p, 1);    
+        Dishes.RemoveByCount((CartItem)p, 1);
     }
+
+
+
+    public ICommand OnAddByOne { get; }
+    private bool CanAddByOneExecuted(object p) => p is CartItem;
+    private void OnAddByOneExecute(object p) => Dishes.Add((CartItem)p, 1);
 
     #endregion
 
@@ -48,6 +54,7 @@ public class CartViewModel : ViewModelBase
         OnMenuPage = new NavigationCommand<MenuPageViewModel>(navigationStore, () => new MenuPageViewModel(navigationStore, Dishes));
         OnRemoveItem = new LambdaCommand(OnRemoveItemExecute, CanRemoveItemExecuted);
         OnRemoveByOne = new LambdaCommand(OnRemoveByOneExecute, CanRemoveByOneExecuted);
+        OnAddByOne = new LambdaCommand(OnAddByOneExecute, CanAddByOneExecuted);
         #endregion
         Dishes = cartItems ?? new DishCart();
 
