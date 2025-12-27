@@ -1,6 +1,6 @@
 ﻿using KFCMenu.Models;
 using System.Collections.Specialized;
-using System.ComponentModel;
+
 
 namespace KFCMenu.Services;
 
@@ -26,11 +26,12 @@ public record DishCart :  IList<CartItem>, INotifyCollectionChanged
     }
     public void Add(CartItem cartItem, int count)
     {
+        
         var item = CartItems.FirstOrDefault(items => items.Equals(cartItem));
         
         if (item is null || !cartItem.Equals(item))
         {
-           
+            OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, cartItem));
             CartItems.Add(cartItem);
             return;
         }

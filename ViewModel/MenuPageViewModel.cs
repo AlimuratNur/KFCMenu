@@ -68,8 +68,8 @@ public class MenuPageViewModel : ViewModelBase
     {
         var dish = (Dish)p;
         var cartItem = new CartItem(1,dish);
-        CartItems.Add(cartItem);
-        FoodInCartCount = FoodInCartCount + 1; 
+        CartItems.Add(cartItem, 1 );
+        FoodInCartCount++; 
     }
 
 
